@@ -13,10 +13,31 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.render("example", {
         example: dbExample
       });
+    });
+  });
+
+  app.get("/dashboard", isLoggedIn, function(req, res) {
+    res.render("dashboard");
+  });
+
+  app.get("/register", function(req, res) {
+    res.render("register");
+  });
+
+  app.get("/signin", function(req, res) {
+    res.render("signin");
+  });
+
+  app.get("/logout", function(req, res) {
+    req.session.destroy(function(err) {
+      console.log(err);
+      res.redirect("/");
     });
   });
 
@@ -25,3 +46,10 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next;
+  }
+  res.redirect("/register");
+}
