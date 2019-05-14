@@ -1,3 +1,79 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+nav.top-nav {
+  background: #df7d00 !important;
+  height: 110px;
+  box-shadow: none;
+
+}
+.logo {
+  height: 100px;
+  width: 100px;
+}
+nav .nav-wrapper {
+  text-align: center;
+}
+
+a.sidenav-trigger.top-nav {
+  position: absolute ;
+  text-align: center ;
+  height: 48px ;
+  width: 48px ;
+  top: 28px ;
+  float: none ;
+  margin-left: 1.5rem ;
+  color: white ;
+  font-size: 36px ;
+  z-index: 2 ;
+}
+
+nav.top-nav h1.header {
+  margin: 0;
+  padding-top: 22px;
+}
+
+.header {
+  color: white;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 4.2rem;
+  line-height: 110%
+}
+
+
+.sidenav {
+  background: #999999 !important;
+}
+
+.sidelinks {
+  color: white !important;
+  text-decoration: none;
+}
+
+.sidelinks:hover {
+  text-decoration: none;
+}
+
+
+header, main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+  nav .nav-wrapper {
+    text-align: center;
+  }
+}
+      
+@media only screen and (min-width: 601px) {
+  .row .col.offset-m1 {
+    margin-right: 8.3333333333333%;
+  }
+}
