@@ -3,12 +3,18 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+    console.log("Got index route");
+    if (req.isAuthenticated()) {
+      var user = {
+        id: req.session.passport.user,
+        isLoggedIn: req.isAuthenticated()
+      };
+      console.log("Authenticated", user);
+      res.render("index", user);
+    } else {
+      console.log("NOT Authenticated");
+      res.render("index");
+    }
   });
 
   // Load example page and pass in an example by id

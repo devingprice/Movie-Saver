@@ -82,16 +82,19 @@ module.exports = function(passport, user) {
 
         User.findOne({ where: { email: email } })
           .then(function(user) {
+            console.log("found user", user);
             if (!user) {
+              console.log("No user");
               return done(null, false, { message: "Email does not exist" });
             }
 
             if (!isValidPassword(user.password, password)) {
+              console.log("invalid pass");
               return done(null, false, { message: "Incorrect password." });
             }
 
             var userinfo = user.get();
-
+            console.log("Userinfo", userinfo);
             return done(null, userinfo);
           })
           .catch(function(err) {
