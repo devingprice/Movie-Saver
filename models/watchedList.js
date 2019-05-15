@@ -1,6 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var WatchedList = sequelize.define("WatchedList", {
-    apiId: DataTypes.STRING
+    apiId: DataTypes.STRING,
+    title: DataTypes.STRING,
+    // eslint-disable-next-line camelcase
+    poster_path: DataTypes.STRING
   });
 
   WatchedList.associate = function(models) {
