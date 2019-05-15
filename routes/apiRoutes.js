@@ -1,27 +1,21 @@
 var db = require("../models");
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
+module.exports = function(app, passport) {
+  app.post(
+    "/register",
+    passport.authenticate("local-signup", {
+      successRedirect: "/",
+      failureRedirect: "/register"
+    })
+  );
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
+  app.post(
+    "/signin",
+    passport.authenticate("local-signin", {
+      successRedirect: "/",
+      failureRedirect: "/signin"
+    })
+  );
   //WATCHEDLIST
 
   //Get all examples
@@ -40,7 +34,9 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/watchedList/:id", function(req, res) {
-    db.WatchedList.destroy({ where: { id: req.params.id } }).then(function(dbWatchedList) {
+    db.WatchedList.destroy({
+      where: { id: req.params.id }
+    }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
     });
   });
@@ -63,7 +59,9 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/wishList/:id", function(req, res) {
-    db.WishList.destroy({ where: { id: req.params.id } }).then(function(dbWishList) {
+    db.WishList.destroy({
+      where: { id: req.params.id }
+    }).then(function(dbWishList) {
       res.json(dbWishList);
     });
   });

@@ -39,7 +39,23 @@
   </ul>
 </header>
 
-
-
+{{#if isLoggedIn }}
+<div style="text-align: center; margin: 40px auto;">
+  <h1>User signed in: {{id}}</h1>
+  <a href="/logout">logout</a>
+</div>
+<div style="text-align: center; margin: 40px auto;">
+  <a href="/watchedList">watchedList</a>
+  <a href="/wishList">wishList</a>
+</div>
+<div style="text-align: center; margin: 40px auto;">
+  <a href="/search/The_Matrix">sampleSearch</a>
+</div>
+{{else}}
+<div style="text-align: center; margin: 40px auto;">
+  <a href="/signin">signin</a>
+  <a href="/register">register</a>
+</div>
+{{/if}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

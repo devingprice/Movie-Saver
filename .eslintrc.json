@@ -5,6 +5,14 @@
         "node": true
     },
     "extends": "prettier",
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "ecmaFeatures": {
+            "arrowFunctions": true,
+            "spread": true,
+            "modules": true
+        }
+    },
     "plugins": [
         "prettier"
       ],
