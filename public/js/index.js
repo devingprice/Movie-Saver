@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Wishlist
 
 $(".wishlist-button").on("click", function (event) {
@@ -68,3 +69,12 @@ $(".watchedlist-button").on("click", function (event) {
 
 
 // Tre
+=======
+$(document).ready(function() {
+  $(".sidenav").sidenav();
+});
+
+$(document).ready(function() {
+  $(".modal").modal();
+});
+>>>>>>> 0e66008fdb386f36ded3ef796fb0c47b8dd086ea

@@ -2,10 +2,53 @@
   line-height: 2.5;
 }
 
+.poster {
+  padding: 10px;
+}
+
+.shad {
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.sBar {
+  margin-left: 55px !important;
+}
+
+.bot {
+  margin-top: 28em !important;
+}
+
+.bot2 {
+  margin-top: 23em !important;
+}
+
+.title {
+  font-family: 'Heebo', sans-serif;
+  color: #444;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
+
+.user {
+  padding: 0 32px;
+  color: #444;
+}
 nav.top-nav {
   height: 110px;
   box-shadow: none;
 
+}
+
+.fas {
+  font-size: 30px;
+
+}
+
+
+
+.iCon {
+  font-size: 50px !important;
 }
 .logo {
   height: 100px;
@@ -16,20 +59,19 @@ nav.top-nav {
   text-align: center !important;
   padding: 10px;
 }
-/* nav .nav-wrapper {
-  text-align: center;
-} */
+
 
 a.sidenav-trigger.top-nav {
   position: absolute ;
   text-align: center ;
-  height: 48px ;
-  width: 48px ;
-  top: 28px ;
+  height: 45px ;
+  width: 45px ;
+  top: 3px ;
+  left: -20px;
   float: none ;
   margin-left: 1.5rem ;
   color: white ;
-  font-size: 36px ;
+  font-size: 30px ;
   z-index: 2 ;
 }
 
@@ -72,7 +114,13 @@ h1 {
 }
 .sidelinks:hover {
   text-decoration: none;
+  color: white;
 }
+.sidelinks:hover i{
+  color:white;
+}
+
+
 
 
 header, main, footer {
@@ -86,10 +134,17 @@ header, main, footer {
   nav .nav-wrapper {
     text-align: center;
   }
+
 }
       
 @media only screen and (min-width: 601px) {
   .row .col.offset-m1 {
     margin-right: 8.3333333333333%;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .sBar {
+    margin-left: 0px !important;
   }
 }
