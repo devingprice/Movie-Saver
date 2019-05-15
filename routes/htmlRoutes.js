@@ -1,4 +1,5 @@
 var db = require("../models");
+var omdb = require("../controllers/omdb.controller");
 
 module.exports = function(app) {
   // Load index page
@@ -52,8 +53,13 @@ module.exports = function(app) {
     res.render("watchedList");
   });
 
-  app.get("/search", function(req, res) {
-    res.render("search");
+  app.get("/search/:title/:type?", function(req, res) {
+    var title = req.params.title;
+    var type = req.params.type || "movie";
+
+    omdb.search(title, type, function(data) {
+      res.render("search", data);
+    });
   });
 
   // Render 404 page for any unmatched routes
