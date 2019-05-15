@@ -1,13 +1,13 @@
-{{#if Search}}
+{{#if hasResults}}
   <ul>
-  {{#each Search}}
+  {{#each results}}
     <li class="search-result">
-      <div>{{Title}}</div>
-      <div>{{Year}}</div>
-      <div>{{Type}}</div>
-      <div>{{Poster}}</div>
-      <button class="watchlist-button" data-id="{{imdbID}}">Add to Watchlist</button>
-      <button class="watchedlist-button" data-id="{{imdbID}}">Add to Watchlist</button>
+      <div>{{title}}</div>
+      <div>{{year}}</div>
+      <div>{{id}}</div>
+      <div>{{poster_path}}</div>
+      <button class="watchlist-button" data-id="{{id}}">Add to Watchlist</button>
+      <button class="watchedlist-button" data-id="{{id}}">Add to Watchlist</button>
     </li>
   {{/each}}
   </ul>

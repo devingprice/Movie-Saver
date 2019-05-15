@@ -11,11 +11,15 @@ module.exports = function(app) {
       res.render("index", user);
     } else {
       console.log("NOT Authenticated");
-      res.render("index");
+      omdb.trending(function(data) {
+        console.log(data);
+        res.render("index", data);
+      });
+      //res.render("index");
     }
   });
 
-  app.get("/dashboard", isLoggedIn, function(req, res) {
+  app.get("/dashboard", redirectIfNotLoggedIn, function(req, res) {
     res.render("dashboard");
   });
 
@@ -68,9 +72,14 @@ module.exports = function(app) {
 
   app.get("/search/:title/:type?", function(req, res) {
     var title = req.params.title;
-    var type = req.params.type || "movie";
+    //var type = req.params.type || "movie";
 
-    omdb.search(title, type, function(data) {
+    //omdb.search(title, type, function(data) {
+    omdb.searchMovie(title, function(data) {
+      console.log(data);
+      if (data.results.length > 0) {
+        data.hasResults = true;
+      }
       res.render("search", data);
     });
   });
@@ -80,9 +89,13 @@ module.exports = function(app) {
   });
 };
 
-function isLoggedIn(req, res, next) {
+function redirectIfNotLoggedIn(req, res, next) {
+  console.log("is logged function");
   if (req.isAuthenticated()) {
+    console.log("is authed | next");
     return next;
+  } else {
+    console.log("not authed | signin");
+    res.redirect("/signin");
   }
-  res.redirect("/signin");
 }
