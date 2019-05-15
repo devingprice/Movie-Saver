@@ -1,70 +1,31 @@
-<header>
-  <nav class="top-nav orange lighten-1">
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="row">
-          <div class="col s12 m10 offset-m1">
-            <h1 class="header">
-            </h1>
-            <div class="row" id="topbarsearch">
-              <div class="input-field col s6 s12">
-                <i class="material-icons prefix">search</i>
-                <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete">
-              </div>
-            </div>
-          </div>
+
+	<main>
+    <div class="gridx">
+      <div class="cell title">
+        Trending
+
         </div>
-      </div>
     </div>
-  </nav>
-  <div class="container">
-    <a href="#" data-target="slide-out" class="top-nav sidenav-trigger full hide-on-large-only ">
-      <i class="medium material-icons">menu</i>
-    </a>
+		<div class="grid-x">
+			<div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
+			</div>
 
-  </div>
 
-  <ul id="slide-out" class="sidenav sidenav-fixed">
-    <li class="center">
-      <img class="logo" src="/styles/images/modified-logo.png">
-    </li>
-    <li>
-      <div class="user-view">
-      </div>
-    </li>
-    <li><a href="#!" class="sidelinks waves-effect waves-light"><i
-          class="small material-icons">call_made</i>Trending</a></li>
-    <li><a href="#!" class="sidelinks waves-effect waves-light">Second Link</a></li>
+			<div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
+			</div>
 
-    {{#if isLoggedIn }}
-    <div style="text-align: center; margin: 40px auto;">
-      <h1>User signed in: {{id}}</h1>
-      <a href="/logout">logout</a>
-    </div>
-    <div style="text-align: center; margin: 40px auto;">
-      <a href="/watchedList">watchedList</a>
-      <a href="/wishList">wishList</a>
-    </div>
-    <div style="text-align: center; margin: 40px auto;">
-      <a href="/search/The_Matrix">sampleSearch</a>
-    </div>
-    {{else}}
-    <div>
-      <li><a href="/signin" class="sidelinks waves-effect waves-light"><i
-            class="small material-icons">account_box</i>Log In</a>
-      <li><a href="/register" class="sidelinks waves-effect waves-light"><i
-            class="small material-icons">account_circle</i>Register</a>
-    </div>
-    {{/if}}
-    </li>
-    <li>
-      <div class="divider"></div>
-    </li>
-    </div>
-  </ul>
-</header>
 
-<<<<<<< HEAD
+			<div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
+			</div>
+
+
+			<div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
+			</div>
+		</div>
+	</main>
+
+
+
 {{#if isLoggedIn }}
 
 
@@ -109,8 +70,5 @@ Error loading trending
 
 
 {{/if}}
-=======
-
->>>>>>> 70fb74e3c7e66739d033d9a0e4cb3b74c70e31fc
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
