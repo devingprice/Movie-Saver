@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var WishList = sequelize.define("WishList", {
-    imdbID: DataTypes.STRING
+    apiId: DataTypes.STRING
   });
 
   WishList.associate = function(models) {

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var WatchedList = sequelize.define("WatchedList", {
-    imdbID: DataTypes.STRING
+    apiId: DataTypes.STRING
   });
 
   WatchedList.associate = function(models) {
