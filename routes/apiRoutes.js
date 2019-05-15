@@ -35,7 +35,7 @@ module.exports = function(app, passport) {
   // Delete an example by id
   app.delete("/api/watchedList/:id", function(req, res) {
     db.WatchedList.destroy({
-      where: { id: req.params.id }
+      where: { imdbID: req.params.id }
     }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
     });
@@ -52,6 +52,7 @@ module.exports = function(app, passport) {
 
   // Create a new example
   app.post("/api/wishList", function(req, res) {
+    console.log("post route hit");
     db.WishList.create(req.body).then(function(dbWishList) {
       res.json(dbWishList);
     });
@@ -60,7 +61,7 @@ module.exports = function(app, passport) {
   // Delete an example by id
   app.delete("/api/wishList/:id", function(req, res) {
     db.WishList.destroy({
-      where: { id: req.params.id }
+      where: { imdbID: req.params.id }
     }).then(function(dbWishList) {
       res.json(dbWishList);
     });

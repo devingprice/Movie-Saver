@@ -6,8 +6,8 @@
       <div>{{Year}}</div>
       <div>{{Type}}</div>
       <div>{{Poster}}</div>
-      <button class="watchlist-button" data-id="{{imdbID}}">Add to Watchlist</button>
-      <button class="watchedlist-button" data-id="{{imdbID}}">Add to Watchlist</button>
+      <button class="wishlist-button" data-id="{{imdbID}}" data-title="{{Title}}" data-poster="{{poster_path}}">Add to Wishlist</button>
+      <button class="watchedlist-button" data-id="{{imdbID}}" data-title="{{Title}}" data-poster="{{poster_path}}">Add to Watchedlist</button>
     </li>
   {{/each}}
   </ul>
