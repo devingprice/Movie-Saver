@@ -13,6 +13,9 @@ module.exports = function(app) {
       console.log("NOT Authenticated");
       omdb.trending(function(data) {
         console.log(data);
+        if (data.results.length > 0) {
+          data.hasResults = true;
+        }
         res.render("index", data);
       });
       //res.render("index");
@@ -39,9 +42,10 @@ module.exports = function(app) {
   });
 
   app.get("/movie/:id", function(req, res) {
-    var imdbID = req.params.id;
+    var movieDbId = req.params.id;
 
-    omdb.byId(imdbID, function(data) {
+    omdb.movieById(movieDbId, function(data) {
+      console.log(data);
       res.render("movie", data);
     });
   });

@@ -1,40 +1,54 @@
-{{#if Response}}
-<h1>{{Title}}</h1>
+{{#if id}}
+
+<h1>{{title}}</h1>
+<div>{{poster_path}}</div>
+<div>{{homepage}}</div>
+<div>{{overview}}</div>
+
 {{else}}
+
 No movie by this is id
+
 {{/if}}
 
 <!-- Example data
-{ Title: 'The Matrix Reloaded',
-  Year: '2003',
-  Rated: 'R',
-  Released: '15 May 2003',
-  Runtime: '138 min',
-  Genre: 'Action, Sci-Fi',
-  Director: 'Lana Wachowski, Lilly Wachowski',
-  Writer:
-   'Lilly Wachowski, Lana Wachowski, Lilly Wachowski (characters), Lana Wachowski (characters)',
-  Actors:
-   'Ray Anthony, Christine Anu, Andy Arness, Alima Ashton-Sheibu',
-  Plot:
-   'Six months after the events depicted in The Matrix, Neo has proved to be a good omen for the free humans, as more and more humans are being freed from the matrix and brought to Zion, the one and only stronghold of the Resistance. Neo himself has discovered his superpowers including super speed, ability to see the codes of the things inside the matrix, and a certain degree of precognition. But a nasty piece of news hits the human resistance: 250,000 machine sentinels are digging to Zion and would reach them in 72 hours. As Zion prepares for the ultimate war, Neo, Morpheus and Trinity are advised by the Oracle to find the Keymaker who would help them reach the Source. Meanwhile Neo\'s recurrent dreams depicting Trinity\'s death have got him worried and as if it was not enough, Agent Smith has somehow escaped deletion, has become more powerful than before and has chosen Neo as his next target.',
-  Language: 'English, French',
-  Country: 'USA',
-  Awards: '8 wins & 31 nominations.',
-  Poster:
-   'https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg',
-  Ratings:
-   [ { Source: 'Internet Movie Database', Value: '7.2/10' },
-     { Source: 'Rotten Tomatoes', Value: '73%' },
-     { Source: 'Metacritic', Value: '62/100' } ],
-  Metascore: '62',
-  imdbRating: '7.2',
-  imdbVotes: '474,589',
-  imdbID: 'tt0234215',
-  Type: 'movie',
-  DVD: '14 Oct 2003',
-  BoxOffice: '$281,500,000',
-  Production: 'Warner Bros. Pictures',
-  Website: 'http://whatisthematrix.warnerbros.com/',
-  Response: 'True' }
+{ adult: false,                                                                                             
+  backdrop_path: '/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',                                                        
+  belongs_to_collection:                                                                                    
+   { id: 86311,                                                                                             
+     name: 'The Avengers Collection',                                                                       
+     poster_path: '/qJawKUQcIBha507UahUlX0keOT7.jpg',                                                       
+     backdrop_path: '/zuW6fOiusv4X9nnW3paHGfXcSll.jpg' },                                                   
+  budget: 356000000,                                                                                        
+  genres:                                                                                                   
+   [ { id: 12, name: 'Adventure' },                                                                         
+     { id: 878, name: 'Science Fiction' },                                                                  
+     { id: 28, name: 'Action' } ],                                                                          
+  homepage: 'https://www.marvel.com/movies/avengers-endgame',                                               
+  id: 299534,                                                                                               
+  imdb_id: 'tt4154796',                                                                                     
+  original_language: 'en',                                                                                  
+  original_title: 'Avengers: Endgame',                                                                      
+  overview:                                                                                                 
+   'After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of t
+d Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Th
+' actions and restore order to the universe once and for all, no matter what consequences may be in store.',
+  popularity: 290.05,                                                                                       
+  poster_path: '/or06FN3Dka5tukK1e9sl16pB3iy.jpg',                                                          
+  production_companies:                                                                                     
+   [ { id: 420,                                                                                             
+       logo_path: '/hUzeosd33nzE5MCNsZxCGEKTXaQ.png',                                                       
+       name: 'Marvel Studios',                                                                              
+       origin_country: 'US' } ],                                                                            
+  production_countries: [ { iso_3166_1: 'US', name: 'United States of America' } ],                         
+  release_date: '2019-04-24',                                                                               
+  revenue: 2503147735,                                                                                      
+  runtime: 181,                                                                                             
+  spoken_languages: [ { iso_639_1: 'en', name: 'English' } ],                                               
+  status: 'Released',                                                                                       
+  tagline: 'Part of the journey is the end.',                                                               
+  title: 'Avengers: Endgame',                                                                               
+  video: false,                                                                                             
+  vote_average: 8.5,                                                                                        
+  vote_count: 5276 }                                                                                        
   -->
