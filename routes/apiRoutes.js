@@ -20,16 +20,24 @@ module.exports = function(app, passport) {
 
   //Get all examples
   app.get("/api/watchedlist", skipIfNotLoggedIn, function(req, res) {
-    db.WatchedList.findAll({}).then(function(dbWatchedList) {
+    db.WatchedList.findAll({
+      where: { UserId: req.session.passport.user }
+    }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
     });
   });
 
   // Create a new example
   app.post("/api/watchedList", skipIfNotLoggedIn, function(req, res) {
-    db.WatchedList.create({
-      userId: req.session.passport.user,
-      apiId: req.body.apiId
+    db.WatchedList.findOrCreate({
+      where: {
+        UserId: req.session.passport.user,
+        apiId: req.body.id
+      },
+      defaults: {
+        UserId: req.session.passport.user,
+        apiId: req.body.id
+      }
     }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
     });
@@ -58,6 +66,7 @@ module.exports = function(app, passport) {
 
   // Create a new example
   app.post("/api/wishList", skipIfNotLoggedIn, function(req, res) {
+    console.log("hit wishlist", req.session);
     db.WishList.create({
       userId: req.session.passport.user,
       apiId: req.body.apiId
@@ -80,9 +89,13 @@ module.exports = function(app, passport) {
 };
 
 function skipIfNotLoggedIn(req, res, next) {
+  console.log("func to skip");
   if (req.isAuthenticated()) {
-    return next;
+    console.log("not skipped");
+    next();
+    //return;
   } else {
-    res.json({ success: false });
+    console.log("skipped");
+    res.json({ loggedIn: false });
   }
 }
