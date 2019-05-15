@@ -12,7 +12,7 @@ module.exports = function(app) {
     } else {
       console.log("NOT Authenticated");
       omdb.trending(function(data) {
-        console.log(data);
+        //console.log(data);
         if (data.results.length > 0) {
           data.hasResults = true;
         }
