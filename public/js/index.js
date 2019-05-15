@@ -36,3 +36,10 @@ function deleteFromList(listname, id, cb) {
     cb(data);
   });
 }
+$(document).ready(function() {
+  $(".sidenav").sidenav();
+});
+
+$(document).ready(function() {
+  $(".modal").modal();
+});
