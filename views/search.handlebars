@@ -1,0 +1,16 @@
+{{#if Search}}
+  <ul>
+  {{#each Search}}
+    <li class="search-result">
+      <div>{{Title}}</div>
+      <div>{{Year}}</div>
+      <div>{{Type}}</div>
+      <div>{{Poster}}</div>
+      <button class="watchlist-button" data-id="{{imdbID}}">Add to Watchlist</button>
+      <button class="watchedlist-button" data-id="{{imdbID}}">Add to Watchlist</button>
+    </li>
+  {{/each}}
+  </ul>
+{{else}}
+  You have no search results
+{{/if}}
