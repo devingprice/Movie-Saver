@@ -1,10 +1,7 @@
-var db = require("../models");
 var omdb = require("../controllers/omdb.controller");
 
 module.exports = function(app) {
-  // Load index page
   app.get("/", function(req, res) {
-    console.log("Got index route");
     if (req.isAuthenticated()) {
       var user = {
         id: req.session.passport.user,
@@ -46,11 +43,27 @@ module.exports = function(app) {
   });
 
   app.get("/wishList", function(req, res) {
-    res.render("wishList");
+    if (req.isAuthenticated()) {
+      var id = req.session.passport.user;
+      console.log("Authenticated", { id });
+
+      res.render("wishList", { id }); //wishlist will request data from /api/wishList
+    } else {
+      console.log("NOT Authenticated");
+      res.redirect("/signin"); //could make it display a placeholder
+    }
   });
 
   app.get("/watchedList", function(req, res) {
-    res.render("watchedList");
+    if (req.isAuthenticated()) {
+      var id = req.session.passport.user;
+      console.log("Authenticated", { id });
+
+      res.render("watchedList", { id }); //watchedList will request data from /api/watchedList
+    } else {
+      console.log("NOT Authenticated");
+      res.redirect("/signin"); //could make it display a placeholder
+    }
   });
 
   app.get("/search/:title/:type?", function(req, res) {
@@ -62,7 +75,6 @@ module.exports = function(app) {
     });
   });
 
-  // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
@@ -72,5 +84,5 @@ function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next;
   }
-  res.redirect("/register");
+  res.redirect("/signin");
 }
