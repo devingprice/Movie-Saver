@@ -1,5 +1,5 @@
 {
-  "name": "node-handlebars-boilerplate",
+  "name": "project-2",
   "version": "1.0.0",
   "description": "Project 2 Starter",
   "main": "server.js",
@@ -11,14 +11,26 @@
   },
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "dotenv": "^6.2.0",
     "env": "0.0.2",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "mysql2": "^1.6.4",
     "node": "^12.2.0",
+=======
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.16.1",
+    "mysql2": "^1.6.5",
+>>>>>>> 70fb74e3c7e66739d033d9a0e4cb3b74c70e31fc
     "nodemon": "^1.19.0",
-    "sequelize": "^4.41.2"
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.8.6"
   },
   "devDependencies": {
     "chai": "^4.1.2",
