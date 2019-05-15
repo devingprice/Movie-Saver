@@ -27,6 +27,7 @@ module.exports = function(app, passport) {
 
   // Create a new example
   app.post("/api/watchedList", function(req, res) {
+    console.log(req.session);
     db.WatchedList.create(req.body).then(function(dbWatchedList) {
       res.json(dbWatchedList);
     });
@@ -52,7 +53,7 @@ module.exports = function(app, passport) {
 
   // Create a new example
   app.post("/api/wishList", function(req, res) {
-    console.log("post route hit");
+    console.log(req.session);
     db.WishList.create(req.body).then(function(dbWishList) {
       res.json(dbWishList);
     });
