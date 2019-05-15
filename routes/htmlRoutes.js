@@ -38,10 +38,10 @@ module.exports = function(app) {
   });
 
   app.get("/movie/:id", function(req, res) {
-    db.Movie.findOne({ where: { id: req.params.id } }).then(function(dbMovie) {
-      res.render("movie", {
-        movie: dbMovie
-      });
+    var imdbID = req.params.id;
+
+    omdb.byId(imdbID, function(data) {
+      res.render("movie", data);
     });
   });
 

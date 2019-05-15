@@ -21,5 +21,22 @@ module.exports = {
       .catch(error => {
         console.log(error);
       });
+  },
+  byId: function(imdbID, cb) {
+    var requestUrl = urlRoot;
+    axios
+      .get(requestUrl, {
+        params: {
+          i: imdbID,
+          r: "json",
+          plot: "full"
+        }
+      })
+      .then(response => {
+        cb(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
