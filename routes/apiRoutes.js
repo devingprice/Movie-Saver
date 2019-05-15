@@ -36,7 +36,7 @@ module.exports = function(app, passport) {
   // Delete an example by id
   app.delete("/api/watchedList/:id", function(req, res) {
     db.WatchedList.destroy({
-      where: { id: req.params.id }
+      where: { imdbID: req.params.id }
     }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
     });
@@ -62,7 +62,7 @@ module.exports = function(app, passport) {
   // Delete an example by id
   app.delete("/api/wishList/:id", function(req, res) {
     db.WishList.destroy({
-      where: { id: req.params.id }
+      where: { imdbID: req.params.id }
     }).then(function(dbWishList) {
       res.json(dbWishList);
     });
