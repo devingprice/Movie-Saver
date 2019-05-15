@@ -1,4 +1,7 @@
 <button id="test" data-id="522681">Add 522681 to watched list</button>
+<ul id="watched">
+
+</ul>
 <script>
   console.log("loaded scripts");
   //make ajax request to /api/watchedList
@@ -6,6 +9,18 @@
     console.log("ready");
     requestList("watchedList", function(data) {
       console.log("received", data);
+      data.map(movie => {
+        $("#watched").append(
+          $("<li>").append(
+            $("<h1>").text("apiId: " + movie.apiId),
+            $("<p>").text("id: " + movie.id),
+            $("<button>").attr({
+              "data-id": movie.id,
+              "class": "remove-from-watchedlist"
+            }).text("remove")
+          )
+        )
+      })
     })
   });
 
@@ -13,7 +28,15 @@
     console.log("clicked button");
     var id = $(this).attr('data-id');
     addToList("watchedList", id, function(data) {
-      console.log("watched return", data)
+      console.log("add watched return", data)
     })
   })
+
+  $(document).on('click', '.remove-from-watchedlist', function () {
+      var id = $(this).attr('data-id');
+      deleteFromList("watchedList", id, function (data) {
+        console.log("delete from watched return", data)
+        $(this).closest(".li").remove();
+      })
+    })
 </script>

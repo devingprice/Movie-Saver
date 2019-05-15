@@ -45,10 +45,11 @@ module.exports = function(app, passport) {
 
   // Delete an example by id
   app.delete("/api/watchedList/:id", skipIfNotLoggedIn, function(req, res) {
+    console.log("delete func watchedlist");
     db.WatchedList.destroy({
       where: {
         id: req.params.id,
-        userId: req.session.passport.user
+        UserId: req.session.passport.user
       }
     }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
