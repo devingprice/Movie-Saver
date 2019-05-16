@@ -89,14 +89,6 @@ module.exports = function(app, passport) {
       res.json(dbWishList);
     });
 
-    // db.WishList.create({
-    //   userId: req.session.passport.user,
-    //   apiId: req.body.apiId,
-    //   title: req.body.title,
-    //   poster_path: req.body.poster
-    // }).then(function(dbWishList) {
-    //   res.json(dbWishList);
-    // });
   });
 
   // Delete an example by id
