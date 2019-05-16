@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 function requestList(listname, cb) {
   console.log("ran request list");
@@ -37,28 +37,25 @@ function deleteFromList(listname, id, cb) {
     cb(data);
   });
 }
-=======
-<<<<<<< HEAD
-// Wishlist
 
-$(".wishlist-button").on("click", function (event) {
-  console.log("working")
+$(".wishlist-button").on("click", function(event) {
+  console.log("working");
   var title = $(this).attr("data-title");
   var id = $(this).attr("data-id");
-  var poster = $(this).attr("data-poster")
+  var poster = $(this).attr("data-poster");
   var $this = $(this);
 
-  if (($this).hasClass("red")) {
+  if ($this.hasClass("red")) {
     $.ajax({
       url: "/api/wishList/" + id,
       type: "delete",
-      success: function (data) {
-        $this.removeClass("red")
-        $this.text("Add to Wishlist")
+      success: function(data) {
+        $this.removeClass("red");
+        $this.text("Add to Wishlist");
       }
     });
   } else {
-    console.log(poster)
+    console.log(poster);
     $.post(
       "/api/wishList",
       {
@@ -67,50 +64,47 @@ $(".wishlist-button").on("click", function (event) {
         poster_path: poster
       },
       function(data, status) {
-        $this.addClass("red", true)
-        $this.text("Remove from Wishlist!")
+        $this.addClass("red", true);
+        $this.text("Remove from Wishlist!");
       }
     );
   }
 });
 
-
-
-
 // Watchlist
 
-$(".watchedlist-button").on("click", function (event) {
+$(".watchedlist-button").on("click", function(event) {
   console.log("watchedlist-working");
   var title = $(this).attr("data-title");
   var id = $(this).attr("data-id");
   var poster = $(this).attr("data-poster");
   var $this = $(this);
 
-  if (($this).hasClass("red")) {
+  if ($this.hasClass("red")) {
     $.ajax({
       url: "/api/watchedList/" + id,
       type: "delete",
-      success: function (data) {
+      success: function(data) {
         $this.removeClass("red");
         $this.text("Add to Watchedlist");
       }
     });
   } else {
-    $.post("/api/watchedList", {
-      title: title,
-      id: id,
-      poster_path: poster
-    }, function (data, status) {
-      $this.addClass("red", true)
-      $this.text("Remove from Watchedlist!")
-    });
+    $.post(
+      "/api/watchedList",
+      {
+        title: title,
+        id: id,
+        poster_path: poster
+      },
+      function(data, status) {
+        $this.addClass("red", true);;
+        $this.text("Remove from Watchedlist!");;
+      }
+    );
   }
 });
 
-
-// Tre
-=======
->>>>>>> e395226a0e46e7a5a5d6a90921b91adc5c13cfa7
 $(document).ready(function() {
   $(".sidenav").sidenav();
 });
@@ -118,4 +112,3 @@ $(document).ready(function() {
 $(document).ready(function() {
   $(".modal").modal();
 });
->>>>>>> 0e66008fdb386f36ded3ef796fb0c47b8dd086ea
