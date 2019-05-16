@@ -43,18 +43,21 @@
     <div class="cell title">
       Trending
     </div>
-
+    
+    {{#if hasResults}}
+    
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
-        <img class="poster swiper-slide" src="styles/images/poster.jpg">
+      {{#each results}}
+        <a href="/movie/{{id}}"><img class="poster swiper-slide" src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}"></a>
+      {{/each}}
       </div>
+    </div>
+    {{else}}
+    Error loading trending
+    {{/if}}
+
+
 
       <script src="../dist/js/swiper.min.js"></script>
 
