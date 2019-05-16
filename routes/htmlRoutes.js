@@ -36,12 +36,25 @@ module.exports = function(app) {
     if (user) {
       results.isLoggedIn = user.isLoggedIn;
     }
+// trending
     omdb.trending(function (trendingData) {
       if (trendingData.results.length > 0) {
         trendingData.hasResults = true;
-      }
+      };
       results.trending = trendingData;
-
+// top rated
+      omdb.topRated(function(topRatedData){
+        if (topRatedData.results.length > 0) {
+          topRatedData.hasResults = true;
+      };
+      results.topRated = topRatedData;
+// now playing
+      omdb.nowPlaying(function(nowPlayingData){
+        if (nowPlayingData.results.length > 0) {
+          nowPlayingData.hasResults = true;
+      };
+      results.nowPlaying = nowPlayingData;
+// upcoming
       omdb.upcoming(function(upcomingData){
         if (upcomingData.results.length > 0) {
           upcomingData.hasResults = true;
@@ -140,7 +153,7 @@ module.exports = function(app) {
       res.render("404");
     }
   });
-};
+});
 
 function redirectIfNotLoggedIn(req, res, next) {
   console.log("is logged function");

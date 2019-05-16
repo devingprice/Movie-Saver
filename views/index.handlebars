@@ -44,25 +44,6 @@
       Trending
     </div>
 
-    {{#if hasResults}}
-    
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-      {{#each results}}
-        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
-      {{/each}}
-      </div>
-    </div>
-    {{else}}
-    Error Loading Trending
-    {{/if}}
-    <br>
-{{!--Top Rated --}}
-<div class="gridx">
-    <div class="cell title">
-      Top Rated
-    </div>
-    
     {{#if trending.hasResults}}
     
     <div class="swiper-container">
@@ -73,9 +54,55 @@
       </div>
     </div>
     {{else}}
+    Error Loading Trending
+    {{/if}}
+    <br>
+
+{{!--Top Rated --}}
+<div class="gridx">
+    <div class="cell title">
+      Top Rated
+    </div>
+    
+    {{#if topRated.hasResults}}
+    
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+      {{#each topRated.results}}
+        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
+      {{/each}}
+      </div>
+    </div>
+    {{else}}
     Error Loading The Top Rated
     {{/if}}
+    <br>
 
+{{!--Now Playing --}}
+<div class="gridx">
+    <div class="cell title">
+     Now Playing
+    </div>
+    
+    {{#if nowPlaying.hasResults}}
+    
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+      {{#each nowPlaying.results}}
+        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
+      {{/each}}
+      </div>
+    </div>
+    {{else}}
+    Error Loading Now Playing
+    {{/if}}
+    <br>
+
+{{!-- Up Coming --}}
+<div class="gridx">
+    <div class="cell title">
+      Upcoming
+    </div>
     {{#if upcoming.hasResults}}
     
     <div class="swiper-container">
