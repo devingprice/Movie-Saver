@@ -124,8 +124,9 @@ module.exports = function(app) {
     if (req.isAuthenticated()) {
       isLoggedIn = req.isAuthenticated();
       res.render("404", { isLoggedIn });
+    } else {
+      res.render("404");
     }
-    res.render("404");
   });
 };
 
