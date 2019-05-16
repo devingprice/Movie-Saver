@@ -63,11 +63,15 @@
       Top Rated
     </div>
     
+<<<<<<< HEAD
     {{#if hasUpcoming}}
+=======
+    {{#if trending.hasResults}}
+>>>>>>> b170d49b23d69e0182a761fa53dedd0e8ee9d882
     
     <div class="swiper-container">
       <div class="swiper-wrapper">
-      {{#each results}}
+      {{#each trending.results}}
         <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
       {{/each}}
       </div>
@@ -76,6 +80,22 @@
     Error Loading The Top Rated
     {{/if}}
 
+<<<<<<< HEAD
+=======
+    {{#if upcoming.hasResults}}
+    
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {{#each upcoming.results}}
+        <img class="poster swiper-slide" data-id="{{id}}" src="http://image.tmdb.org/t/p/w185{{poster_path}}"
+          alt="{{title}}">
+        {{/each}}
+      </div>
+    </div>
+    {{else}}
+    Error loading trending
+    {{/if}}
+>>>>>>> b170d49b23d69e0182a761fa53dedd0e8ee9d882
 
 </main>
 
