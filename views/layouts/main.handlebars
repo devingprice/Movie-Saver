@@ -128,6 +128,40 @@
 	</header>
 
 	{{{body}}}
+
+
+	{{!-- Sign-In Modal --}}
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h5>Sign-In</h5>
+			<p>
+				<form id="signin_modal" name="signin" method="post" action="signin">
+					<label for="email">Email Address</label>
+					<input class="text" name="email" type="text" />
+					<label for="password">Password</label>
+					<input name="password" type="password" />
+					<input class="btn" type="submit" value="Sign In" />
+				</form>
+			</p>
+		</div>
+	</div>
+	{{!-- Register Modal --}}
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<h4>Register</h4>
+			<p>
+				<form id="register" name="register" method="post" action="/register">
+					<label for="name">Full Name</label>
+					<input class="text" name="name" type="name" /><br>
+					<label for="email">Email Address</label>
+					<input class="text" name="email" type="email" />
+					<label for="password">Password</label>
+					<input name="password" type="password" />
+					<input class="btn" type="submit" value="Register" />
+				</form>
+			</p>
+		</div>
+	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="/js/index.js"></script>
 </body>

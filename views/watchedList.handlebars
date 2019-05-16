@@ -1,5 +1,4 @@
 <main>
-  <button id="test" data-id="522681">Add 522681 to watched list</button>
   <ul id="watched">
 
   </ul>
@@ -13,26 +12,27 @@
       console.log("received", data);
       data.map(movie => {
         $("#watched").append(
-          $("<li>").append(
-            $("<h1>").text("apiId: " + movie.apiId),
-            $("<p>").text("id: " + movie.id),
-            $("<button>").attr({
-              "data-id": movie.id,
-              "class": "remove-from-watchedlist"
-            }).text("remove")
+          $("<li>").attr("class", "search-result").append(
+            $("<div>").append(
+              $("<img>").attr("src", "https://image.tmdb.org/t/p/w185_and_h278_bestv2/" + movie["poster_path"])
+            ),
+            $("<div>").attr("class", "search-info").append(
+              $("<a>").attr("href", "/movie/"+movie.apiId).append(
+                $("<h1>").text(movie.title)
+              ),
+              $("<div>").append(
+                $("<button>").attr({
+                  "data-id": movie.id,
+                  "class": "remove-from-watchedlist btn"
+                }).text("Remove")
+              )
+              
+            )
           )
         )
       })
     })
   });
-
-  $(document).on('click', '#test', function() {
-    console.log("clicked button");
-    var id = $(this).attr('data-id');
-    addToList("watchedList", id, function(data) {
-      console.log("add watched return", data)
-    })
-  })
 
   $(document).on('click', '.remove-from-watchedlist', function () {
       var id = $(this).attr('data-id');

@@ -2,24 +2,44 @@ var omdb = require("../controllers/omdb.controller");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
+    // //old way was going to use a different page when signed in
+    // if (req.isAuthenticated()) {
+    //   var user = {
+    //     id: req.session.passport.user,
+    //     isLoggedIn: req.isAuthenticated()
+    //   };
+    //   console.log("Authenticated", user);
+    //   res.render("index", user);
+    // } else {
+    //   console.log("NOT Authenticated");
+    //   omdb.trending(function(data) {
+    //     //console.log(data);
+    //     if (data.results.length > 0) {
+    //       data.hasResults = true;
+    //     }
+    //     res.render("index", data);
+    //   });
+    //   //res.render("index");
+    // }
+    var user = null;
     if (req.isAuthenticated()) {
-      var user = {
+      user = {
         id: req.session.passport.user,
         isLoggedIn: req.isAuthenticated()
       };
       console.log("Authenticated", user);
-      res.render("index", user);
     } else {
       console.log("NOT Authenticated");
-      omdb.trending(function(data) {
-        //console.log(data);
-        if (data.results.length > 0) {
-          data.hasResults = true;
-        }
-        res.render("index", data);
-      });
-      //res.render("index");
     }
+    omdb.trending(function (data) {
+      if (data.results.length > 0) {
+        data.hasResults = true;
+      }
+      if (user) {
+        data.isLoggedIn = user.isLoggedIn;
+      }
+      res.render("index", data);
+    });
   });
 
   app.get("/dashboard", redirectIfNotLoggedIn, function(req, res) {
@@ -46,16 +66,22 @@ module.exports = function(app) {
 
     omdb.movieById(movieDbId, function(data) {
       console.log(data);
+      if (req.isAuthenticated()) {
+        data.isLoggedIn = req.isAuthenticated();
+      }
       res.render("movie", data);
     });
   });
 
   app.get("/wishList", function(req, res) {
     if (req.isAuthenticated()) {
-      var id = req.session.passport.user;
-      console.log("Authenticated", { id });
+      var user = {
+        id: req.session.passport.user,
+        isLoggedIn: req.isAuthenticated()
+      };
+      console.log("Authenticated", user);
 
-      res.render("wishList", { id }); //wishlist will request data from /api/wishList
+      res.render("wishList", user); //wishlist will request data from /api/wishList
     } else {
       console.log("NOT Authenticated");
       res.redirect("/signin"); //could make it display a placeholder
@@ -64,10 +90,13 @@ module.exports = function(app) {
 
   app.get("/watchedList", function(req, res) {
     if (req.isAuthenticated()) {
-      var id = req.session.passport.user;
-      console.log("Authenticated", { id });
+      var user = {
+        id: req.session.passport.user,
+        isLoggedIn: req.isAuthenticated()
+      };
+      console.log("Authenticated", user);
 
-      res.render("watchedList", { id }); //watchedList will request data from /api/watchedList
+      res.render("watchedList", user); //watchedList will request data from /api/watchedList
     } else {
       console.log("NOT Authenticated");
       res.redirect("/signin"); //could make it display a placeholder
@@ -84,12 +113,18 @@ module.exports = function(app) {
       if (data.results.length > 0) {
         data.hasResults = true;
       }
+      if (req.isAuthenticated()) {
+        data.isLoggedIn = req.isAuthenticated();
+      }
       res.render("search", data);
     });
   });
 
   app.get("*", function(req, res) {
-    res.render("404");
+    if (req.isAuthenticated()) {
+      isLoggedIn = req.isAuthenticated();
+    }
+    res.render("404", {isLoggedIn});
   });
 };
 

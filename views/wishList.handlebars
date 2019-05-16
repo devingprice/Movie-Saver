@@ -1,8 +1,64 @@
 <main>
-  
+  <ul id="wishlist">
+
+  </ul>
 </main>
 <script>
-  //make ajax request to /api/wishList
-  var userId = {{id}};
-  console.log(userId);
+  console.log("loaded scripts");
+  //make ajax request to /api/watchedList
+  $(document).ready(function () {
+    console.log("ready");
+    requestList("wishList", function (data) {
+      console.log("received", data);
+      data.map(movie => {
+        $("#wishlist").append(
+          $("<li>").attr("class", "search-result").append(
+            $("<div>").append(
+              $("<img>").attr("src", "https://image.tmdb.org/t/p/w185_and_h278_bestv2/" + movie["poster_path"])
+            ),
+            $("<div>").attr("class", "search-info").append(
+              $("<a>").attr("href", "/movie/" + movie.apiId).append(
+                $("<h1>").text(movie.title)
+              ),
+              $("<div>").append(
+                $("<button>").attr({
+                  "data-id": movie.id,
+                  "data-title": movie.title,
+                  "data-poster": movie["poster_path"],
+                  "class": "move-to-watchedlist btn"
+                }).text("Move to Watched List"),
+                $("<button>").attr({
+                  "data-id": movie.id,
+                  "class": "remove-from-wishlist btn"
+                }).text("Remove")
+              )
+
+            )
+          )
+        )
+      })
+    })
+  });
+
+  $(document).on('click', '.remove-from-wishlist', function () {
+    var id = $(this).attr('data-id');
+    deleteFromList("wishList", id, function (data) {
+      console.log("delete from wish return", data)
+      $(this).closest(".li").remove();
+    })
+  })
+
+  $(document).on('click', '.move-to-watchedlist', function () {
+      var id = $(this).attr('data-id');
+      var title = $(this).attr('data-title');
+      var poster = $(this).attr('data-poster');
+
+      addToList("wishList", { id, title, poster }, function (data) {
+        console.log("add to watched return", data);
+      });
+      deleteFromList("wishList", id, function (data) {
+        console.log("delete from wish return", data)
+        $(this).closest(".li").remove();
+      })
+    })
 </script>

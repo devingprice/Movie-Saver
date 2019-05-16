@@ -1,43 +1,3 @@
-
-{{!-- Sign-In Modal --}}
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h5>Sign-In</h5>
-    <p>
-      <form id="signin_modal" name="signin" method="post" action="signin">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign In" />
-      </form>
-    </p>
-  </div>
-  <div class="modal-footer">
-    <a href="/signin" class="modal-close waves-effect waves-orange btn-flat">Sign In</a>
-  </div>
-</div>
-{{!-- Register Modal --}}
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <h4>Register</h4>
-    <p>
-      <form id="register" name="register" method="post" action="/register">
-        <label for="name">Full Name</label>
-        <input class="text" name="name" type="name" /><br>
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="email" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-      </form>
-    </p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-orange btn-flat">Submit</a>
-  </div>
-</div>
-
-
 <main>
   <div class="gridx">
     <div class="cell title">
@@ -45,27 +5,23 @@
 
     </div>
 
-    {{#if isLoggedIn }}
+    
 
-    not
-
-    {{else}}
-
-      {{#if hasResults}}
+    {{#if hasResults}}
+    
+    <div class="grid-x">
+      {{#each results}}
       
-      <div class="grid-x">
-        {{#each results}}
-        
-        <div class="cell medium-3 small-6 poster">
-          <a href="/movie/{{id}}"><img class="shad" src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}"></a>
-        </div>
-        {{/each}}
-      
+      <div class="cell medium-3 small-6 poster">
+        <a href="/movie/{{id}}"><img class="shad" src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}"></a>
       </div>
-      {{else}}
-      Error loading trending
-      {{/if}}
+      {{/each}}
+    
+    </div>
+    {{else}}
+    Error loading trending
     {{/if}}
+    
     
     <div class="grid-x">
       <div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
