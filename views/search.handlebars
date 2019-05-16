@@ -8,6 +8,10 @@
       <div><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{poster_path}}" alt="{{title}}"
           class="search-poster"></div>
       <div class="search-info">
+        <a href="/movie/{{id}}"><h1>{{title}}</h1></a>
+        <div>
+          <a class="waves-effect waves-light btn-small" class="add_circle_outline" data-id={{id}} data-title={{title}} data-poster={{poster_path}}>Add to Wish List</a>
+          <a class="waves-effect waves-light btn-small" class="add_circle_outline" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to Watched List</a>
         <a href="/movie/{{id}}">
           <h1>{{title}}</h1>
         </a>

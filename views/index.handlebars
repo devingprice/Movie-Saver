@@ -1,12 +1,49 @@
+
+{{!-- Sign-In Modal --}}
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h5>Sign-In</h5>
+    <p>
+      <form id="signin_modal" name="signin" method="post" action="signin">
+        <label for="email">Email Address</label>
+        <input class="text" name="email" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+      </form>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-close waves-effect waves-orange btn-flat">Sign In</a>
+  </div>
+</div>
+{{!-- Register Modal --}}
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Register</h4>
+    <p>
+      <form id="register" name="register" method="post" action="/register">
+        <label for="name">Full Name</label>
+        <input class="text" name="name" type="name" /><br>
+        <label for="email">Email Address</label>
+        <input class="text" name="email" type="email" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+      </form>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-orange btn-flat">Submit</a>
+  </div>
+</div>
+
+
 <main>
+  {{!-- Trending --}}
   <div class="gridx">
-    <div class="cell title">
+    <div class="cell title" id="trending">
       Trending
     </div>
 
-    
-
-    
     {{#if trending.hasResults}}
     
     <div class="swiper-container">
@@ -17,9 +54,55 @@
       </div>
     </div>
     {{else}}
-    Error loading trending
+    Error Loading Trending
     {{/if}}
+    <br>
 
+{{!--Top Rated --}}
+<div class="gridx">
+    <div class="cell title" id="topRated">
+      Top Rated
+    </div>
+    
+    {{#if topRated.hasResults}}
+    
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+      {{#each topRated.results}}
+        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
+      {{/each}}
+      </div>
+    </div>
+    {{else}}
+    Error Loading The Top Rated
+    {{/if}}
+    <br>
+
+{{!--Now Playing --}}
+<div class="gridx">
+    <div class="cell title" id="nowPlaying">
+     Now Playing
+    </div>
+    
+    {{#if nowPlaying.hasResults}}
+    
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+      {{#each nowPlaying.results}}
+        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
+      {{/each}}
+      </div>
+    </div>
+    {{else}}
+    Error Loading Now Playing
+    {{/if}}
+    <br>
+
+{{!-- Up Coming --}}
+<div class="gridx">
+    <div class="cell title" id="upComing">
+      Upcoming
+    </div>
     {{#if upcoming.hasResults}}
     
     <div class="swiper-container">
