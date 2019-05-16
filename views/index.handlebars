@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 {{!-- Sign-In Modal --}}
 <div id="modal1" class="modal">
@@ -37,18 +38,23 @@
 </div>
 
 
+=======
+>>>>>>> 8a2b405fea40139e87becb21f38e01d20a0ba7cb
 <main>
   <div class="gridx">
     <div class="cell title">
       Trending
     </div>
+
+    
+
     
     {{#if hasResults}}
     
     <div class="swiper-container">
       <div class="swiper-wrapper">
       {{#each results}}
-        <a href="/movie/{{id}}"><img class="poster swiper-slide" src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}"></a>
+        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
       {{/each}}
       </div>
     </div>
@@ -56,11 +62,13 @@
     Error loading trending
     {{/if}}
 
-
-
-      <script src="../dist/js/swiper.min.js"></script>
-
-
-     
-
 </main>
+
+
+<script src="../dist/js/swiper.min.js"></script>
+<script>
+  //<a href="/movie/{{id}}">
+  $(".poster").click("on", function(){
+    window.location.href = "/movie/" + $(this).attr("data-id");
+  })
+</script>
