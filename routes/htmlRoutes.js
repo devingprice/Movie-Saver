@@ -31,14 +31,26 @@ module.exports = function(app) {
     } else {
       console.log("NOT Authenticated");
     }
-    omdb.trending(function (data) {
-      if (data.results.length > 0) {
-        data.hasResults = true;
+
+    var results = {};
+    if (user) {
+      results.isLoggedIn = user.isLoggedIn;
+    }
+    omdb.trending(function (trendingData) {
+      if (trendingData.results.length > 0) {
+        trendingData.hasResults = true;
       }
-      if (user) {
-        data.isLoggedIn = user.isLoggedIn;
-      }
-      res.render("index", data);
+      results.trending = trendingData;
+
+      omdb.upcoming(function(upcomingData){
+        if (upcomingData.results.length > 0) {
+          upcomingData.hasResults = true;
+        }
+        results.upcoming = upcomingData;
+
+        res.render("index", results);
+      })
+     
     });
   });
 
