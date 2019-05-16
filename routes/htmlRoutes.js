@@ -1,26 +1,54 @@
 var omdb = require("../controllers/omdb.controller");
 
 module.exports = function(app) {
-  app.get("/", function(req, res) {
-    // //old way was going to use a different page when signed in
-    // if (req.isAuthenticated()) {
-    //   var user = {
-    //     id: req.session.passport.user,
-    //     isLoggedIn: req.isAuthenticated()
-    //   };
-    //   console.log("Authenticated", user);
-    //   res.render("index", user);
-    // } else {
-    //   console.log("NOT Authenticated");
-    //   omdb.trending(function(data) {
-    //     //console.log(data);
-    //     if (data.results.length > 0) {
-    //       data.hasResults = true;
-    //     }
-    //     res.render("index", data);
-    //   });
-    //   //res.render("index");
-    // }
+//   app.get("/", function(req, res) {
+//     var user = null;
+//     if (req.isAuthenticated()) {
+//       user = {
+//         id: req.session.passport.user,
+//         isLoggedIn: req.isAuthenticated()
+//       };
+//       console.log("Authenticated", user);
+//     } else {
+//       console.log("NOT Authenticated");
+//     }
+
+//     var results = {};
+//     if (user) {
+//       results.isLoggedIn = user.isLoggedIn;
+//     }
+// // trending
+//     omdb.trending(function (trendingData) {
+//       if (trendingData.results.length > 0) {
+//         trendingData.hasResults = true;
+//       };
+//       results.trending = trendingData;
+// // top rated
+//       omdb.topRated(function(topRatedData){
+//         if (topRatedData.results.length > 0) {
+//           topRatedData.hasResults = true;
+//       };
+//       results.topRated = topRatedData;
+// // now playing
+//       omdb.nowPlaying(function(nowPlayingData){
+//         if (nowPlayingData.results.length > 0) {
+//           nowPlayingData.hasResults = true;
+//       };
+//       results.nowPlaying = nowPlayingData;
+// // upcoming
+//       omdb.upcoming(function(upcomingData){
+//         if (upcomingData.results.length > 0) {
+//           upcomingData.hasResults = true;
+//         }
+//         results.upcoming = upcomingData;
+
+//         res.render("index", results);
+//       })
+     
+//     });
+//   });
+
+  app.get("/", function (req, res) {
     var user = null;
     if (req.isAuthenticated()) {
       user = {
@@ -36,34 +64,14 @@ module.exports = function(app) {
     if (user) {
       results.isLoggedIn = user.isLoggedIn;
     }
-// trending
-    omdb.trending(function (trendingData) {
+
+    omdb.trending(function(trendingData) {
       if (trendingData.results.length > 0) {
         trendingData.hasResults = true;
-      };
+      }
       results.trending = trendingData;
-// top rated
-      omdb.topRated(function(topRatedData){
-        if (topRatedData.results.length > 0) {
-          topRatedData.hasResults = true;
-      };
-      results.topRated = topRatedData;
-// now playing
-      omdb.nowPlaying(function(nowPlayingData){
-        if (nowPlayingData.results.length > 0) {
-          nowPlayingData.hasResults = true;
-      };
-      results.nowPlaying = nowPlayingData;
-// upcoming
-      omdb.upcoming(function(upcomingData){
-        if (upcomingData.results.length > 0) {
-          upcomingData.hasResults = true;
-        }
-        results.upcoming = upcomingData;
 
-        res.render("index", results);
-      })
-     
+      res.render("index", results);
     });
   });
 
@@ -153,7 +161,7 @@ module.exports = function(app) {
       res.render("404");
     }
   });
-});
+};
 
 function redirectIfNotLoggedIn(req, res, next) {
   console.log("is logged function");
@@ -164,4 +172,4 @@ function redirectIfNotLoggedIn(req, res, next) {
     console.log("not authed | signin");
     res.redirect("/signin");
   }
-}
+};
