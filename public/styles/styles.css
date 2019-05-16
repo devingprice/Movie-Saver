@@ -3,7 +3,13 @@
 }
 
 .poster {
-  padding: 10px;
+  height: auto;
+  width: 345.5px;
+  text-align: center;
+}
+
+.bars {
+  margin-bottom: 15em;
 }
 
 .shad {
@@ -147,4 +153,27 @@ header, main, footer {
   .sBar {
     margin-left: 0px !important;
   }
+}
+
+body {
+  background: #fff;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color:#000;
+  margin: 0;
+  padding: 0;
+}
+.swiper-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-wrapper {
+  width:100%;
+}
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width:350px !important;
+
 }
