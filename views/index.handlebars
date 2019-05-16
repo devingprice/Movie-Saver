@@ -2,41 +2,29 @@
   <div class="gridx">
     <div class="cell title">
       Trending
-
     </div>
 
     
 
+    
     {{#if hasResults}}
     
-    <div class="grid-x">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
       {{#each results}}
-      
-      <div class="cell medium-3 small-6 poster">
-        <a href="/movie/{{id}}"><img class="shad" src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}"></a>
-      </div>
+        <a href="/movie/{{id}}"><img class="poster swiper-slide" src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}"></a>
       {{/each}}
-    
+      </div>
     </div>
     {{else}}
     Error loading trending
     {{/if}}
-    
-    
-    <div class="grid-x">
-      <div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
-      </div>
 
 
-      <div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
-      </div>
+
+      <script src="../dist/js/swiper.min.js"></script>
 
 
-      <div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
-      </div>
+     
 
-
-      <div class="cell medium-3 small-6 poster"><img class="shad" src="styles/images/poster.jpg">
-      </div>
-    </div>
 </main>

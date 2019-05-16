@@ -123,8 +123,9 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     if (req.isAuthenticated()) {
       isLoggedIn = req.isAuthenticated();
+      res.render("404", { isLoggedIn });
     }
-    res.render("404", {isLoggedIn});
+    res.render("404");
   });
 };
 
