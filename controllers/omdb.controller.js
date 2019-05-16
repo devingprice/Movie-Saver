@@ -85,7 +85,11 @@ module.exports = {
       });
   },
   trending: function(cb) {
-    if (cached.trending) {
+    if (
+      cached.trending !== null &&
+      cached.trendingLastUpdated !== null &&
+      Date.now() - cached.trendingLastUpdated < 1000 * 60 * 60 * 24
+    ) {
       console.log("used cache");
       cb(cached.trending);
     } else {
@@ -99,6 +103,8 @@ module.exports = {
           }
         })
         .then(response => {
+          cached.trending = response.data;
+          cached.trendingLastUpdated = Date.now();
           cb(response.data);
         })
         .catch(error => {
