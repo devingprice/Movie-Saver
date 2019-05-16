@@ -17,13 +17,15 @@ function requestList(listname, cb) {
     });
 }
 
-function addToList(listname, id, cb) {
+function addToList(listname, data, cb) {
   console.log("ran add list");
   $.ajax({
     method: "post",
     url: "/api/" + listname,
     data: {
-      id
+      apiId: data.id,
+      title: data.title,
+      poster: data.poster
     }
   }).then(function (data) {
     cb(data);
@@ -54,7 +56,7 @@ $(".wishlist-button").on("click", function(event) {
       $(this).text("Add to Wishlist");
     });
   } else {
-    addToList("wishList", id, function(data){
+    addToList("wishList", { id, title, poster }, function(data){
       $(this).addClass("red", true);
       $(this).text("Remove from Wishlist!");
     });
@@ -75,9 +77,17 @@ $(".watchedlist-button").on("click", function (event) {
       $(this).text("Add to Watched List");
     });
   } else {
-    addToList("watchedList", id, function (data) {
+    addToList("watchedList", { id, title, poster }, function (data) {
       $(this).addClass("red", true);
       $(this).text("Remove from Watched List!");
     });
   }
+});
+
+$(document).ready(function () {
+  $(".sidenav").sidenav();
+});
+
+$(document).ready(function () {
+  $(".modal").modal();
 });

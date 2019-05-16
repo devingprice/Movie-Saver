@@ -29,14 +29,18 @@ module.exports = function(app, passport) {
 
   // Create a new example
   app.post("/api/watchedList", skipIfNotLoggedIn, function(req, res) {
+    console.log(req.body);
+
     db.WatchedList.findOrCreate({
       where: {
         UserId: req.session.passport.user,
-        apiId: req.body.id
+        apiId: req.body.apiId
       },
       defaults: {
         UserId: req.session.passport.user,
-        apiId: req.body.id
+        apiId: req.body.apiId,
+        title: req.body.title,
+        poster_path: req.body.poster
       }
     }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
@@ -68,12 +72,31 @@ module.exports = function(app, passport) {
   // Create a new example
   app.post("/api/wishList", skipIfNotLoggedIn, function(req, res) {
     console.log("hit wishlist", req.session);
-    db.WishList.create({
-      userId: req.session.passport.user,
-      apiId: req.body.apiId
-    }).then(function(dbWishList) {
+    console.log(req.body);
+
+    db.WishList.findOrCreate({
+      where: {
+        UserId: req.session.passport.user,
+        apiId: req.body.apiId
+      },
+      defaults: {
+        UserId: req.session.passport.user,
+        apiId: req.body.apiId,
+        title: req.body.title,
+        poster_path: req.body.poster
+      }
+    }).then(function (dbWishList) {
       res.json(dbWishList);
     });
+
+    // db.WishList.create({
+    //   userId: req.session.passport.user,
+    //   apiId: req.body.apiId,
+    //   title: req.body.title,
+    //   poster_path: req.body.poster
+    // }).then(function(dbWishList) {
+    //   res.json(dbWishList);
+    // });
   });
 
   // Delete an example by id
