@@ -11,10 +11,10 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-  	<link rel="stylesheet" href="../dist/css/swiper.min.css" content-type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+	<link rel="stylesheet" href="../dist/css/swiper.min.css" content-type="text/css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
@@ -26,39 +26,39 @@
 
 <body>
 
-  <header>
-    <nav class="orange lighten-1">
-      <div class="nav-wrapper">
-        <form>
-          <div class="input-field sBar">
-            <input id="search" required="" type="search"> <label class="label-icon" for="search"><i
-                class="material-icons">search</i></label> <i class="material-icons">close</i>
-          </div>
-        </form>
-      </div>
-    </nav>
+	<header>
+		<nav class="orange lighten-1">
+			<div class="nav-wrapper">
+				<form>
+					<div class="input-field sBar">
+						<input id="search" required="" type="search"> <label class="label-icon" for="search"><i
+								class="material-icons">search</i></label> <i class="material-icons">close</i>
+					</div>
+				</form>
+			</div>
+		</nav>
 
 
-    <div class="container">
-      <a class="top-nav sidenav-trigger full hide-on-large-only" data-target="slide-out" href="#"><i
-          class="iCon material-icons">menu</i></a>
-    </div>
+		<div class="container">
+			<a class="top-nav sidenav-trigger full hide-on-large-only" data-target="slide-out" href="#"><i
+					class="iCon material-icons">menu</i></a>
+		</div>
 
 
-    <ul class="sidenav sidenav-fixed" id="slide-out">
-      <li class="center"><img class="logo" src="/styles/images/modified-logo.png">
-      </li>
+		<ul class="sidenav sidenav-fixed" id="slide-out">
+			<li class="center"><img class="logo" src="/styles/images/modified-logo.png">
+			</li>
 
 
-      <li>
-        <div class="user-view">
-        </div>
-      </li>
+			<li>
+				<div class="user-view">
+				</div>
+			</li>
 
 
-      <li>
-        <a class="sidelinks waves-effect waves-light" href="#!"><i class="fas fa-fire-alt"></i>Trending</a>
-      </li>
+			<li>
+				<a class="sidelinks waves-effect waves-light" href="#!"><i class="fas fa-fire-alt"></i>Trending</a>
+			</li>
 
 			<li>
 				<a class="sidelinks waves-effect waves-light" href="#!"><i class="fas fa-star"></i>Top Rated</a>
@@ -80,36 +80,36 @@
 
 
 
-      <li style="list-style: none">{{#if isLoggedIn }}</li>
+			<li style="list-style: none">{{#if isLoggedIn }}</li>
 
 
-      <li>
-        <a class="sidelinks waves-effect waves-light" href="/watchedList"><i class="fas fa-film"></i>Watched List</a>
-      </li>
+			<li>
+				<a class="sidelinks waves-effect waves-light" href="/watchedList"><i class="fas fa-film"></i>Watched List</a>
+			</li>
 
 
-      <li>
-        <a class="sidelinks waves-effect waves-light" href="/wishList"><i class="fas fa-heart"></i>Wish List</a>
-      </li>
+			<li>
+				<a class="sidelinks waves-effect waves-light" href="/wishList"><i class="fas fa-heart"></i>Wish List</a>
+			</li>
 
 
-      <div class="bot2">
+			<div class="bot2">
 
-        <li class="user"><i class="fas fa-user"></i> {{id}}</li>
+				<li class="user"><i class="fas fa-user"></i> {{id}}</li>
 
 
-        <li>
-          <a class="sidelinks waves-effect waves-light" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
-        </li>
+				<li>
+					<a class="sidelinks waves-effect waves-light" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+				</li>
 
-        <li style="list-style: none">{{else}}</li>
-      </div>
-      <div class="bot">
-        <div class="divider">
-        </div>
-        
+				<li style="list-style: none">{{else}}</li>
+			</div>
+			<div class="bot">
+				<div class="divider">
+				</div>
 
-			
+
+
 				<!-- Login Trigger -->
 				<li><a href="#modal1" class="sidelinks waves-effect waves-light modal-trigger"><i
 							class="small material-icons">account_box</i>Log-In</a></li>
@@ -119,14 +119,52 @@
 			</div>
 
 
-      <li style="list-style: none">{{/if}}</li>
+			<li style="list-style: none">{{/if}}</li>
 
-      
-      <li></li>
-    </ul>
-  </header>
-  {{{body}}}
-  <script src="/js/index.js"></script>
+			<li></li>
+		</ul>
+	</header>
+
+
+	{{!-- Sign-In Modal --}}
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h5>Sign-In</h5>
+			<p>
+				<form id="signin_modal" name="signin" method="post" action="signin">
+					<label for="email">Email Address</label>
+					<input class="text" name="email" type="text" />
+					<label for="password">Password</label>
+					<input name="password" type="password" />
+					<input class="btn" type="submit" value="Sign In" />
+				</form>
+			</p>
+		</div>
+	</div>
+	{{!-- Register Modal --}}
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<h4>Register</h4>
+			<p>
+				<form id="register" name="register" method="post" action="/register">
+					<label for="name">Full Name</label>
+					<input class="text" name="name" type="name" /><br>
+					<label for="email">Email Address</label>
+					<input class="text" name="email" type="email" />
+					<label for="password">Password</label>
+					<input name="password" type="password" />
+					<input class="btn" type="submit" value="Register" />
+				</form>
+			</p>
+		</div>
+	</div>
+
+	{{{body}}}
+
+	<script src="/js/index.js"></script>
+
+
+
 </body>
 
 </html>
