@@ -7,13 +7,27 @@
     
 
     
-    {{#if hasResults}}
+    {{#if trending.hasResults}}
     
     <div class="swiper-container">
       <div class="swiper-wrapper">
-      {{#each results}}
+      {{#each trending.results}}
         <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
       {{/each}}
+      </div>
+    </div>
+    {{else}}
+    Error loading trending
+    {{/if}}
+
+    {{#if upcoming.hasResults}}
+    
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {{#each upcoming.results}}
+        <img class="poster swiper-slide" data-id="{{id}}" src="http://image.tmdb.org/t/p/w185{{poster_path}}"
+          alt="{{title}}">
+        {{/each}}
       </div>
     </div>
     {{else}}
