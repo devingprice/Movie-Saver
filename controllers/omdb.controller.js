@@ -40,9 +40,14 @@ function requestMovieDbListIfNotCached(varName, reqPath, cb) {
         }
       })
       .then(response => {
-        cached[varName] = response.data;
+        var data = response.data;
+        if (data.results.length > 0) {
+          data.hasResults = true;
+        }
+        cached[varName] = data;
         cached[varName + "LastUpdated"] = Date.now();
-        cb(response.data);
+
+        cb(data);
       })
       .catch(error => {
         console.log(error);
@@ -51,40 +56,40 @@ function requestMovieDbListIfNotCached(varName, reqPath, cb) {
 }
 
 module.exports = {
-  search: function(title, type, cb) {
-    var requestUrl = urlRoot;
-    axios
-      .get(requestUrl, {
-        params: {
-          s: title,
-          type: type,
-          r: "json"
-        }
-      })
-      .then(response => {
-        cb(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  },
-  byId: function(imdbID, cb) {
-    var requestUrl = urlRoot;
-    axios
-      .get(requestUrl, {
-        params: {
-          i: imdbID,
-          r: "json",
-          plot: "full"
-        }
-      })
-      .then(response => {
-        cb(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  },
+  // search: function(title, type, cb) {
+  //   var requestUrl = urlRoot;
+  //   axios
+  //     .get(requestUrl, {
+  //       params: {
+  //         s: title,
+  //         type: type,
+  //         r: "json"
+  //       }
+  //     })
+  //     .then(response => {
+  //       cb(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // },
+  // byId: function(imdbID, cb) {
+  //   var requestUrl = urlRoot;
+  //   axios
+  //     .get(requestUrl, {
+  //       params: {
+  //         i: imdbID,
+  //         r: "json",
+  //         plot: "full"
+  //       }
+  //     })
+  //     .then(response => {
+  //       cb(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // },
   searchMovie: function(query, cb) {
     var requestUrl = movieDbUrl + "search/movie";
     axios

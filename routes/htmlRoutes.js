@@ -66,12 +66,21 @@ module.exports = function(app) {
     }
 
     omdb.trending(function(trendingData) {
-      if (trendingData.results.length > 0) {
-        trendingData.hasResults = true;
-      }
       results.trending = trendingData;
 
-      res.render("index", results);
+      omdb.nowPlaying(function(nowPlayingData) {
+        results.nowPlaying = nowPlayingData;
+
+        omdb.topRated(function(topRatedData) {
+          results.topRated = topRatedData;
+
+          omdb.upcoming(function(upcomingData) {
+            results.upcoming = upcomingData;
+
+            res.render("index", results);
+          });
+        });
+      });
     });
   });
 
