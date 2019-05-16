@@ -6,17 +6,20 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+	<link rel="stylesheet" href="../dist/css/swiper.min.css" content-type="text/css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+	<script src="../dist/js/swiper.min.js"></script>
 	<script src="/js/index.js"></script>
 	<title>Movie Saver</title>
 
@@ -63,7 +66,8 @@
 			</li>
 
 			<li>
-				<a class="sidelinks waves-effect waves-light" href="#!"><i class="fas fa-play-circle"></i>Now Playing</a>
+				<a class="sidelinks waves-effect waves-light" href="#!"><i class="fas fa-play-circle"></i>Now
+					Playing</a>
 			</li>
 
 			<li>
@@ -82,7 +86,8 @@
 
 
 			<li>
-				<a class="sidelinks waves-effect waves-light" href="/watchedList"><i class="fas fa-film"></i>Watched List</a>
+				<a class="sidelinks waves-effect waves-light" href="/watchedList"><i class="fas fa-film"></i>Watched
+					List</a>
 			</li>
 
 
@@ -97,7 +102,8 @@
 
 
 				<li>
-					<a class="sidelinks waves-effect waves-light" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+					<a class="sidelinks waves-effect waves-light" href="/logout"><i
+							class="fas fa-sign-out-alt"></i>Logout</a>
 				</li>
 
 				<li style="list-style: none">{{else}}</li>
@@ -161,8 +167,13 @@
 
 	<script src="/js/index.js"></script>
 
-
-
+	<footer class="footer">
+	<p><a href="https://www.themoviedb.org/" target="_blank">
+		<img src="styles/images/TMDB_logo.png" alt="tmdb logo" width="150px"></a>
+	<a href="https://github.com/devingprice/project-2.git/" target="_blank">
+		<img src="styles/images/modified-logo.png" alt="project logo" id="teamlogo"></a>
+		</p>
+	</footer>
 </body>
 
 </html>

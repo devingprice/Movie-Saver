@@ -177,3 +177,16 @@ body {
   width:350px !important;
 
 }
+
+footer {
+    padding: 20px;
+    text-align: center;
+    color: white;
+    max-height: 300px;
+    background: #df7d00;
+    border-top: 4px solid grey;
+}
+#teamlogo {
+  height: 70px;
+  width: 70px;
+}
