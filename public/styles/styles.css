@@ -1,3 +1,6 @@
+html, body {
+  height: 100%;
+}
 .list-group-item {
   line-height: 2.5;
 }
@@ -130,12 +133,17 @@ h1 {
 
 
 header, main, footer {
-  padding-left: 300px;
+  margin-left: 300px;
+}
+main {
+  padding: 30px;
+  /* Make footer got to bottom*/
+  min-height: calc(100vh - 64px -  94px);
 }
 
 @media only screen and (max-width : 992px) {
   header, main, footer {
-    padding-left: 0;
+    margin-left: 0;
   }
   nav .nav-wrapper {
     text-align: center;
