@@ -29,8 +29,7 @@
 }
 
 .title {
-  font-family: 'Anton', sans-serif;
-  color: #444;
+  font-family: 'Fjalla One', sans-serif;  color: #444;
   font-weight: bold;
   font-size: 40px;
   text-align: center;
@@ -108,6 +107,7 @@ h1 {
 .sidelinks {
   color: #444 !important;
   text-decoration: none;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .waves-effect:hover {
@@ -149,6 +149,10 @@ header, main, footer {
   .row .col.offset-m1 {
     margin-right: 8.3333333333333%;
   }
+
+  .moviePoster{
+    text-align: center;
+  }
 }
 
 @media only screen and (min-width:992px) {
@@ -176,6 +180,18 @@ body {
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width:350px !important;
+  width:325px !important;
+}
 
+.movieTitle {
+  font-family: 'Fjalla One', sans-serif;  color: #444;
+  font-weight: bold;
+  font-size: 40px;
+  padding: 10px;
+}
+
+.moviePoster {
+  padding: 10px;
+  width: 350px;
+  text-align: center;
 }

@@ -1,11 +1,33 @@
 <main>
    {{#if id}}
+ 
+   
+<div class="grid-x yellow">
+   <div class="cell medium-2"></div>
+   <div class="cell medium-3 small-12 blue">     
+       <img src="http://image.tmdb.org/t/p/w185{{poster_path}}" class="moviePoster responsive-img"></img>
+   </div>
+   <div class="cell medium-7 red">
+      <div class="grid-x">
+         <div class="cell">
+           <h1 class="movieTitle">{{title}}</h1>
 
-   <h1>{{title}}</h1>
-   <div>{{poster_path}}</div>
-   <div>{{homepage}}</div>
-   <div>{{overview}}</div>
+         </div>
 
+      </div>
+
+      <span><button class="wishlist-button btn" data-id={{id}} data-title={{title}} data-poster={{poster_path}}>Add to
+         Wishlist</button>
+      <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to
+         Watchedlist</button></span>
+   </div>
+</div>
+
+   <a href="{{homepage}}">Link to movie homepage</a>
+   <div class="moviePoster">{{overview}}</div>
+   <div>
+      
+   </div>
    {{else}}
 
    No movie by this is id

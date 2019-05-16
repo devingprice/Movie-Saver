@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 console.log("Loaded index.js");
 
+
 function requestList(listname, cb) {
   console.log("ran request list");
   $.ajax({
@@ -65,6 +66,7 @@ $(".wishlist-button").on("click", function(event) {
 
 $(".watchedlist-button").on("click", function (event) {
   console.log("clicked wishlist");
+
   var title = $(this).attr("data-title");
   var id = $(this).attr("data-id");
   var poster = $(this).attr("data-poster");
