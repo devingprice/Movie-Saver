@@ -109,6 +109,7 @@ module.exports = function(app) {
       }
       if (req.isAuthenticated()) {
         data.isLoggedIn = req.isAuthenticated();
+        console.log("is logged in ");
       }
       res.render("search", data);
     });

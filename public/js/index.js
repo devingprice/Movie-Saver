@@ -43,44 +43,43 @@ function deleteFromList(listname, id, cb) {
 }
 
 $(".wishlist-button").on("click", function(event) {
-  console.log("clicked wishlist");
+  var $buttonRef = $(this);
   var title = $(this).attr("data-title");
   var id = $(this).attr("data-id");
   var poster = $(this).attr("data-poster");
 
-  var hasRed = $(this).hasClass("red");
+  var isInLists = $(this).hasClass("orange lighten-1");
 
-  if (hasRed) {
+  if (isInLists) {
     deleteFromList("wishList", id, function(data) {
-      $(this).removeClass("red");
-      $(this).text("Add to Wishlist");
+      $buttonRef.removeClass("orange lighten-1");
+      $buttonRef.text("Add to Wish List");
     });
   } else {
     addToList("wishList", { id, title, poster }, function(data) {
-      $(this).addClass("red", true);
-      $(this).text("Remove from Wishlist!");
+      $buttonRef.addClass("orange lighten-1", true);
+      $buttonRef.text("Remove from Wish List");
     });
   }
 });
 
 $(".watchedlist-button").on("click", function(event) {
-  console.log("clicked wishlist");
-
+  var $buttonRef = $(this);
   var title = $(this).attr("data-title");
   var id = $(this).attr("data-id");
   var poster = $(this).attr("data-poster");
 
-  var hasRed = $(this).hasClass("red");
+  var isInLists = $(this).hasClass("orange lighten-1");
 
-  if (hasRed) {
+  if (isInLists) {
     deleteFromList("watchedList", id, function(data) {
-      $(this).removeClass("red");
-      $(this).text("Add to Watched List");
+      $buttonRef.removeClass("orange lighten-1");
+      $buttonRef.text("Add to Watched List");
     });
   } else {
     addToList("watchedList", { id, title, poster }, function(data) {
-      $(this).addClass("red", true);
-      $(this).text("Remove from Watched List!");
+      $buttonRef.addClass("orange lighten-1", true);
+      $buttonRef.text("Remove from Watched List");
     });
   }
 });

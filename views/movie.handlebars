@@ -1,30 +1,56 @@
 <main>
    {{#if id}}
 
-      <h1>{{title}}</h1>
-      <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
-      <a href="{{homepage}}">Check Out Movie Homepage</a>
-      <div>{{overview}}</div>
+   <h1>{{title}}</h1>
+   <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
+   <a href="{{homepage}}">Check Out Movie Homepage</a>
+   <div>{{overview}}</div>
 
-      {{#if isLoggedIn}}
-         <div>
-            <button class="wishlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to
-               Wishlist</button>
-            <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to
-               Watchedlist</button>
-         </div>
-      {{else}}
-         <div>
-            <span>Sign in to add to your lists!</span>
-            <a href="/signin" class="btn">Sign in</a>
-         </div>
-      {{/if}}
+   {{#if isLoggedIn}}
+   <div id="buttons">
+      <button class="wishlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to
+         Wishlist</button>
+      <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add
+         to
+         Watchedlist</button>
+   </div>
+   {{else}}
+   <div>
+      <span>Sign in to add to your lists!</span>
+      <a href="/signin" class="btn">Sign in</a>
+   </div>
+   {{/if}}
    {{else}}
 
-      Sorry, No Movie Found By This ID
+   Sorry, No Movie Found By This ID
 
    {{/if}}
 </main>
+
+<script>
+$(document).ready(function () {
+   requestList("watchedList", function (data) {
+      data.map(movie => {
+         var foundInResults = {{id}} === parseInt(movie.apiId);
+
+         if (foundInResults) {
+            $("#buttons").children(".watchedlist-button")
+               .text("Remove from Watched List").addClass("orange lighten-1")
+         }
+      })
+   })
+
+   requestList("wishList", function (data) {
+      data.map(movie => {
+         var foundInResults = {{id}} === parseInt(movie.apiId);
+         if (foundInResults) {
+            $("#buttons").children(".wishlist-button")
+               .text("Remove from Wish List").addClass("orange lighten-1")
+         }
+      })
+   })
+})
+</script>
 <!-- Example data
 { adult: false,                                                                                             
   backdrop_path: '/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg',                                                        
