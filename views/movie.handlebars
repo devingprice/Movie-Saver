@@ -29,12 +29,14 @@
                   <i class="material-icons left">add</i>Add to Watchedlist
                </button>
             </div>
-            {{else}}
+            {{/if}}
+            
+            {{#unless isLoggedIn}}
             <div>
                <span>Sign in to add to your lists!</span>
                <a href="/signin" class="btn">Sign in</a>
             </div>
-            {{/if}}
+            {{/unless}}
 
             <div>
                <button class="trailer-btn waves-effect waves-light btn-small orange" data-title="{{title}}">

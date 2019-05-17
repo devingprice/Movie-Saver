@@ -11,6 +11,11 @@
   margin: 10px;
 }
 
+.search-poster {
+  max-height: 400px;
+  max-width: 300px;
+}
+
 .movie-header {
   display: flex;
   flex-direction: row;
