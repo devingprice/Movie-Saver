@@ -12,15 +12,15 @@
       </div>
       <div class="search-info">
         <a href="/movie/{{id}}">
-          <h1><a class="searchTitle"></a>{{title}}</h1></a>
+          <h1><a class="searchTitle">{{title}}</h1></a>
         </a>
         <div id="buttons-{{id}}">
           {{#if ../isLoggedIn}}
-          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline" data-id="{{id}}"
+          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline getGrey" data-id="{{id}}"
             data-title="{{title}}" data-poster="{{poster_path}}">
             Add to Wish List
           </a>
-          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline" data-id="{{id}}"
+          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline getGrey" data-id="{{id}}"
             data-title="{{title}}" data-poster="{{poster_path}}">
             Add to Watched List
           </a>

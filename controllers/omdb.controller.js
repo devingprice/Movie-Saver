@@ -89,6 +89,23 @@ module.exports = {
         console.log(error);
       });
   },
+  recommendations: function(id, cb) {
+    var requestUrl = movieDbUrl + "movie/" + id + "/recommendations";
+    axios
+      .get(requestUrl, {
+        params: {
+          // eslint-disable-next-line camelcase
+          api_key: movieDbKey,
+          language: "en-US"
+        }
+      })
+      .then(response => {
+        cb(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
   trending: function(cb) {
     var reqPath = "trending/movie/week";
     var varName = "trending";
