@@ -1,25 +1,74 @@
 <main>
-{{#if hasResults}}
+  {{#if hasResults}}
 
   <ul>
-  {{#each results}}
+    {{#each results}}
     <li class="search-result">
 
-      <div><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{poster_path}}" alt="{{title}}" class="search-poster"></div>
+      <div><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{poster_path}}" alt="{{title}}"
+          class="search-poster"></div>
       <div class="search-info">
-        <a href="/movie/{{id}}"><h1>{{title}}</h1></a>
-        <div>
-          <button class="wishlist-button btn" data-id={{id}} data-title={{title}} data-poster={{poster_path}}>Add to Wishlist</button>
-          <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to Watchedlist</button>
+        <a href="/movie/{{id}}">
+          <h1>{{title}}</h1>
+        </a>
+        <div id="buttons-{{id}}">
+          {{#if ../isLoggedIn}}
+          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline" data-id="{{id}}"
+            data-title="{{title}}" data-poster="{{poster_path}}">
+            Add to Wish List
+          </a>
+          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline" data-id="{{id}}"
+            data-title="{{title}}" data-poster="{{poster_path}}">
+            Add to Watched List
+          </a>
+          {{else}}
+          <span>Sign in to add to your lists!</span>
+          <a href="/signin" class="btn">Sign in</a>
+          {{/if}}
         </div>
       </div>
-      
-      
+
+
     </li>
-  {{/each}}
+    {{/each}}
   </ul>
-{{else}}
+  {{else}}
   You have no search results
-{{/if}}
+  {{/if}}
 
 </main>
+
+<script>
+  $(document).ready(function () {
+    var results = [];
+    {{#each results }}
+    results.push({
+      id: {{ id }},
+      title: "{{title}}",
+      poster_path: "{{poster_path}}"
+    })
+    {{/each}}
+
+    requestList("watchedList", function (data) {
+      data.map(movie => {
+        var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
+        
+        if (foundInResults.length > 0) {
+          $("#buttons-" + movie.apiId).children(".watchedlist-button")
+            .text("Remove from Watched List").addClass("orange lighten-1")
+        }
+      })
+    })
+
+    requestList("wishList", function (data) {
+      data.map(movie => {
+        var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
+        
+        if (foundInResults.length > 0) {
+          $("#buttons-" + movie.apiId).children(".wishlist-button")
+            .text("Remove from Wish List").addClass("orange lighten-1")
+        }
+      })
+    })
+  });
+</script>

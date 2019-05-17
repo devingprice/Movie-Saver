@@ -40,7 +40,23 @@ module.exports = function(app, passport) {
         UserId: req.session.passport.user,
         apiId: req.body.apiId,
         title: req.body.title,
+        // eslint-disable-next-line camelcase
         poster_path: req.body.poster
+      }
+    }).then(function(dbWatchedList) {
+      res.json(dbWatchedList);
+    });
+  });
+
+  app.delete("/api/watchedList/byApiId/:id", skipIfNotLoggedIn, function(
+    req,
+    res
+  ) {
+    console.log("delete func watchedlist by api id");
+    db.WatchedList.destroy({
+      where: {
+        apiId: req.params.id,
+        UserId: req.session.passport.user
       }
     }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
@@ -83,12 +99,12 @@ module.exports = function(app, passport) {
         UserId: req.session.passport.user,
         apiId: req.body.apiId,
         title: req.body.title,
+        // eslint-disable-next-line camelcase
         poster_path: req.body.poster
       }
-    }).then(function (dbWishList) {
+    }).then(function(dbWishList) {
       res.json(dbWishList);
     });
-
   });
 
   // Delete an example by id
