@@ -11,7 +11,7 @@
     requestList("watchedList", function(data) {
       console.log("received", data);
       data.map(movie => {
-        $("#watched").append(
+        $("#watched").prepend(
           $("<li>").attr("class", "search-result").append(
             $("<div>").append(
               $("<img>").attr("src", "https://image.tmdb.org/t/p/w185_and_h278_bestv2/" + movie["poster_path"])
