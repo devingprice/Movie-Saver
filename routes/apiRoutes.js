@@ -40,6 +40,7 @@ module.exports = function(app, passport) {
         UserId: req.session.passport.user,
         apiId: req.body.apiId,
         title: req.body.title,
+        // eslint-disable-next-line camelcase
         poster_path: req.body.poster
       }
     }).then(function(dbWatchedList) {
@@ -83,12 +84,12 @@ module.exports = function(app, passport) {
         UserId: req.session.passport.user,
         apiId: req.body.apiId,
         title: req.body.title,
+        // eslint-disable-next-line camelcase
         poster_path: req.body.poster
       }
-    }).then(function (dbWishList) {
+    }).then(function(dbWishList) {
       res.json(dbWishList);
     });
-
   });
 
   // Delete an example by id

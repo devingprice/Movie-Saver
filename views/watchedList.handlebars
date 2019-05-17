@@ -35,10 +35,11 @@
   });
 
   $(document).on('click', '.remove-from-watchedlist', function () {
+      var $searchCont = $(this).closest(".search-result");
       var id = $(this).attr('data-id');
       deleteFromList("watchedList", id, function (data) {
         console.log("delete from watched return", data)
-        $(this).closest(".li").remove();
+        $searchCont.remove();
       })
     })
 </script>

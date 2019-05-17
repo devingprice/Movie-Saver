@@ -2,18 +2,17 @@
 /* eslint-disable no-unused-vars */
 console.log("Loaded index.js");
 
-
 function requestList(listname, cb) {
   console.log("ran request list");
   $.ajax({
     method: "get",
     url: "/api/" + listname
   })
-    .then(function (data) {
+    .then(function(data) {
       console.log(data);
       cb(data);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       console.log(err);
     });
 }
@@ -28,7 +27,7 @@ function addToList(listname, data, cb) {
       title: data.title,
       poster: data.poster
     }
-  }).then(function (data) {
+  }).then(function(data) {
     cb(data);
   });
 }
@@ -38,7 +37,7 @@ function deleteFromList(listname, id, cb) {
   $.ajax({
     method: "delete",
     url: "/api/" + listname + "/" + id
-  }).then(function (data) {
+  }).then(function(data) {
     cb(data);
   });
 }
@@ -51,20 +50,20 @@ $(".wishlist-button").on("click", function(event) {
 
   var hasRed = $(this).hasClass("red");
 
-  if(hasRed){
-    deleteFromList("wishList", id, function (data) {
+  if (hasRed) {
+    deleteFromList("wishList", id, function(data) {
       $(this).removeClass("red");
       $(this).text("Add to Wishlist");
     });
   } else {
-    addToList("wishList", { id, title, poster }, function(data){
+    addToList("wishList", { id, title, poster }, function(data) {
       $(this).addClass("red", true);
       $(this).text("Remove from Wishlist!");
     });
   }
 });
 
-$(".watchedlist-button").on("click", function (event) {
+$(".watchedlist-button").on("click", function(event) {
   console.log("clicked wishlist");
 
   var title = $(this).attr("data-title");
@@ -74,19 +73,19 @@ $(".watchedlist-button").on("click", function (event) {
   var hasRed = $(this).hasClass("red");
 
   if (hasRed) {
-    deleteFromList("watchedList", id, function (data) {
+    deleteFromList("watchedList", id, function(data) {
       $(this).removeClass("red");
       $(this).text("Add to Watched List");
     });
   } else {
-    addToList("watchedList", { id, title, poster }, function (data) {
+    addToList("watchedList", { id, title, poster }, function(data) {
       $(this).addClass("red", true);
       $(this).text("Remove from Watched List!");
     });
   }
 });
 
-$(document).ready(function () {
+$(document).ready(function() {
   $(".sidenav").sidenav();
 
   $(".modal").modal();
