@@ -89,6 +89,10 @@
          htmlHolder += "</div></div>";
 
          $("#recommended").html(htmlHolder)
+<<<<<<< HEAD
+=======
+
+>>>>>>> e906ccdcd3c5bebb573dadf12767928df22a4f6d
          var swiper = new Swiper(".swiper-container", {
             effect: "coverflow",
             initialSlide: 2,
@@ -106,6 +110,12 @@
                el: ".swiper-pagination"
             }
          });
+<<<<<<< HEAD
+=======
+         $(".poster").click("on", function () {
+            window.location.href = "/movie/" + $(this).attr("data-id");
+         })
+>>>>>>> e906ccdcd3c5bebb573dadf12767928df22a4f6d
       })
 
    {{#if isLoggedIn }}
