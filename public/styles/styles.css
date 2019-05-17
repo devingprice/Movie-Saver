@@ -283,10 +283,13 @@ footer {
 
 .dataTitle {
   font-size: 60px;
+  text-shadow: 1px 1px 1px #000; 
 }
 
 .date {
   font-size: 30px;
+  text-shadow: 0px;
+
 }
 
 .poster_image {
@@ -304,10 +307,8 @@ footer {
   padding: 10px;
   font-size: 20px;
   font-weight: 400 !important;
-
+  
 }
-
-
 
 .center_image {
   float: right;
@@ -327,4 +328,28 @@ font-size: 40px !important;
 
 .rcorners1 {
   border-radius: 25px;
+}
+
+.trailerDiv {
+  position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+  height: 0;
+  width: 100%;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.trailerDiv iframe {
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 1000px;
+    max-height: 583px;
+}
+
+.trailer {
+  margin-top: 20px;
 }

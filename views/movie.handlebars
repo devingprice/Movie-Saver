@@ -12,7 +12,7 @@
 					<div class="grid-x">
 						<div class="cell orange lighten-1 rcorners1 shad">
 
-							<div class="dataTitle vcenter">{{title}} <span class="date">({{release_date}})</span></div>
+							<div class="dataTitle vcenter " id="title-to-grab">{{title}} <span class="date">({{release_date}})</span></div>
 
 							
 
@@ -47,11 +47,7 @@
 					</div>
 					{{/if}}
 
-					<div class="grid-x">
-						<div class="cell vcenter">
-							<button class="trailer-btn waves-effect waves-light btn-small orange btns" data-title="{{title}}"><i class="material-icons left">play_arrow</i>Watch Trailer</button> <button class="homepage-link waves-effect waves-light btn-small orange btns" data-title="{{title}}"><a href="{{homepage}}"><i class="material-icons left">movie</i>Movie Website</a></button>
-						</div>
-					</div>
+					
 {{#unless isLoggedIn}}
 
 				<div class="grid-x ">
@@ -69,6 +65,17 @@
 			{{else}} Sorry, No Movie Found By This ID {{/if}}
 		</div>
 	</div>
+   <div class="grid-x trailer">
+      <div class="cell dataTitle orange lighten-1 rcorners1 vcenter shad">
+         Trailer
+      </div>
+      <div class="cell ">
+             <div class="trailerDiv "><iframe id="youtubeVideo" class="poster_vcenter" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+
+      </div>
+   </div>
+
+      <div id="recommended"></div>
 </main>
 <script>
    $(document).ready(function () {
@@ -76,14 +83,14 @@
       getRecommendations({{id}}, function(data){
          console.log(data);
 
-         var htmlHolder = "<h2>Similar Movies</h2><div class='swiper-container'><div class='swiper-wrapper'>";
+         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1 rcorners1 vcenter shad'><h2>Similar Movies</h2></div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
             "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
             "' alt='" + element.title + 
             "'>"
          })
-         htmlHolder += "</div></div>";
+         htmlHolder += "</div></div></div></div>";
 
          $("#recommended").html(htmlHolder)
       })
