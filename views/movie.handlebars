@@ -1,55 +1,81 @@
 <main>
-   {{#if id}}
+   <div class="movie-wrapper">
+      {{#if id}}
 
-   <h1>{{title}}</h1>
-   <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
-   <a href="{{homepage}}">Check Out Movie Homepage</a>
-   <div>{{overview}}</div>
+      <div class="movie-header">
+         <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
+         <div class="movie-header-info">
+            <h1>{{title}} <span>{{release_date}}</span> </h1>
+            <h4>{{tagline}}</h4>
+            <p>
+               <span>Runtime: {{runtime}} </span>
+               <span>Budget: {{budget}}</span>
+            </p>
+            <p>
+               {{#each genres}}
+               <span>{{name}} | </span>
+               {{/each}}
+            </p>
+            <a href="{{homepage}}">Check Out Movie Homepage</a>
 
-   {{#if isLoggedIn}}
-   <div id="buttons">
-      <button class="wishlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to
-         Wishlist</button>
-      <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add
-         to
-         Watchedlist</button>
+            {{#if isLoggedIn}}
+            <div id="buttons">
+               <button class="wishlist-button btn" data-id="{{id}}" data-title="{{title}}"
+                  data-poster="{{poster_path}}">Add to
+                  Wishlist</button>
+               <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}"
+                  data-poster="{{poster_path}}">Add
+                  to
+                  Watchedlist</button>
+            </div>
+            {{else}}
+            <div>
+               <span>Sign in to add to your lists!</span>
+               <a href="/signin" class="btn">Sign in</a>
+            </div>
+            {{/if}}
+
+         </div>
+      </div>
+
+
+      <div>{{overview}}</div>
+
+
+
+      {{else}}
+
+      Sorry, No Movie Found By This ID
+
+      {{/if}}
    </div>
-   {{else}}
-   <div>
-      <span>Sign in to add to your lists!</span>
-      <a href="/signin" class="btn">Sign in</a>
-   </div>
-   {{/if}}
-   {{else}}
-
-   Sorry, No Movie Found By This ID
-
-   {{/if}}
 </main>
 
 <script>
-$(document).ready(function () {
-   requestList("watchedList", function (data) {
-      data.map(movie => {
-         var foundInResults = {{id}} === parseInt(movie.apiId);
+   $(document).ready(function () {
+      {{#if isLoggedIn }}
+         requestList("watchedList", function (data) {
+            data.map(movie => {
+               var foundInResults = {{ id }} === parseInt(movie.apiId);
 
-         if (foundInResults) {
-            $("#buttons").children(".watchedlist-button")
-               .text("Remove from Watched List").addClass("orange lighten-1")
-         }
-      })
-   })
+               if (foundInResults) {
+                  $("#buttons").children(".watchedlist-button")
+                     .text("Remove from Watched List").addClass("orange lighten-1")
+               }
+            })
+         })
 
-   requestList("wishList", function (data) {
-      data.map(movie => {
-         var foundInResults = {{id}} === parseInt(movie.apiId);
-         if (foundInResults) {
-            $("#buttons").children(".wishlist-button")
-               .text("Remove from Wish List").addClass("orange lighten-1")
-         }
-      })
+         requestList("wishList", function (data) {
+            data.map(movie => {
+               var foundInResults = {{ id }} === parseInt(movie.apiId);
+               if (foundInResults) {
+                  $("#buttons").children(".wishlist-button")
+                     .text("Remove from Wish List").addClass("orange lighten-1")
+               }
+            })
+         })
+      {{/if}}
    })
-})
 </script>
 <!-- Example data
 { adult: false,                                                                                             

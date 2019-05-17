@@ -10,3 +10,13 @@
   flex-direction: column;
   margin: 10px;
 }
+
+.movie-header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+.movie-header-info {
+  padding: 10px;
+}

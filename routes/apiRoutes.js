@@ -48,7 +48,10 @@ module.exports = function(app, passport) {
     });
   });
 
-  app.delete("/api/watchedList/byApiId/:id", skipIfNotLoggedIn, function (req, res) {
+  app.delete("/api/watchedList/byApiId/:id", skipIfNotLoggedIn, function(
+    req,
+    res
+  ) {
     console.log("delete func watchedlist by api id");
     db.WatchedList.destroy({
       where: {
