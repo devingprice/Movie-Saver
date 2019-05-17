@@ -224,7 +224,6 @@ font-weight: bold !important;
 font-size: 40px !important;
 }
 
-<<<<<<< HEAD
 #recTitle #sumTitle {
   font-family: 'Fjalla One', sans-serif !important; 
   text-shadow: 2px 2px #ffa733 !important;
@@ -239,30 +238,14 @@ font-size: 40px !important;
   padding-top: 25px;
   width: 100%;
 	height: 0;
-=======
-
-.trailerDiv {
-  position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 25px;
-  height: 0;
-  width: 100%;
->>>>>>> e906ccdcd3c5bebb573dadf12767928df22a4f6d
 }
 
 .trailerDiv iframe {
   position: absolute;
-<<<<<<< HEAD
   top: 0;
   left: 0;
   width: 100% !important;
   height: 100% !important;
   max-width: 1000px;
   max-height: 583px;
-=======
-	top: 0;
-	left: 0;
-	width: 100% !important;
-	height: 100% !important;
->>>>>>> e906ccdcd3c5bebb573dadf12767928df22a4f6d
 }
