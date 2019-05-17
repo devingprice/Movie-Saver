@@ -5,10 +5,11 @@
    <a href="{{homepage}}">Check Out Movie Homepage</a>
    <div>{{overview}}</div>
    <div>
-      <button class="wishlist-button btn" data-id={{id}} data-title={{title}} data-poster={{poster_path}}>Add to
-         Wishlist</button>
-      <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to
-         Watchedlist</button>
+    <a class="waves-effect waves-light btn-small orange" id="wishlistBtn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">
+         <i class="material-icons left">add</i>Add to Wishlist</a></button>
+
+      <a class="waves-effect waves-light btn-small orange" id="watchedlistBtn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">
+         <i class="material-icons left">check</i>Add to Watchedlist</a></button><br><br>
    </div>
    {{else}}
 
