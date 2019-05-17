@@ -10,7 +10,7 @@
 
 				<div class="cell medium-7 summary">
 					<div class="grid-x">
-						<div class="cell orange lighten-1 rcorners1 shad">
+						<div class="cell orange lighten-1  shad">
 
 							<div class="dataTitle vcenter " id="title-to-grab">{{title}} <span class="date">({{release_date}})</span></div>
 
@@ -66,7 +66,7 @@
 		</div>
 	</div>
    <div class="grid-x trailer">
-      <div class="cell dataTitle orange lighten-1 rcorners1 vcenter shad">
+      <div class="cell dataTitle orange lighten-1  vcenter shad">
          Trailer
       </div>
       <div class="cell vcenter">
@@ -83,7 +83,7 @@
       getRecommendations({{ id }}, function (data) {
          console.log(data);
 
-         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1 rcorners1 vcenter shad'>Similar Movies</div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
+         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1  vcenter shad'>Similar Movies</div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
                "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
