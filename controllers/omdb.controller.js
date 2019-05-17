@@ -89,22 +89,22 @@ module.exports = {
         console.log(error);
       });
   },
-  trending: function (cb) {
+  trending: function(cb) {
     var reqPath = "trending/movie/week";
     var varName = "trending";
     requestMovieDbListIfNotCached(varName, reqPath, cb);
   },
-  upcoming: function (cb) {
+  upcoming: function(cb) {
     var reqPath = "movie/upcoming";
     var varName = "upcoming";
     requestMovieDbListIfNotCached(varName, reqPath, cb);
   },
-  nowPlaying: function (cb) {
+  nowPlaying: function(cb) {
     var reqPath = "movie/now_playing";
     var varName = "nowPlaying";
     requestMovieDbListIfNotCached(varName, reqPath, cb);
   },
-  topRated: function (cb) {
+  topRated: function(cb) {
     var reqPath = "movie/top_rated";
     var varName = "topRated";
     requestMovieDbListIfNotCached(varName, reqPath, cb);
