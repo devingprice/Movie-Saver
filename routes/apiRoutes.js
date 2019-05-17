@@ -122,6 +122,7 @@ module.exports = function(app, passport) {
       res.json(dbWishList);
     });
   });
+
   // Delete an example by id
   app.delete("/api/wishList/:id", skipIfNotLoggedIn, function(req, res) {
     db.WishList.destroy({

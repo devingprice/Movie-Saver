@@ -47,17 +47,15 @@
 <script>
   $(document).ready(function () {
     var results = [];
-    { { #each results } }
+    {{ #each results }}
     results.push({
       id: {{ id }},
     title: "{{title}}",
     poster_path: "{{poster_path}}"
     })
-  {
-    {
-      /each}}
+  {{/each}}
 
-      { { #if isLoggedIn } }
+      {{#if isLoggedIn }}
       requestList("watchedList", function (data) {
         data.map(movie => {
           var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
@@ -79,8 +77,6 @@
           }
         })
       })
-      {
-        {
-          /if}}
+      {{/if}}
         });
 </script>
