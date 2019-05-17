@@ -1,21 +1,34 @@
 <main>
    {{#if id}}
+   <center>
+      <h3>{{title}}</h3>
+      <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
+      {{!-- needs to be accurately moved to LINE 23 --}}
+      <a href="{{homepage}}">Check Out Movie Homepage</a> 
+      <div>{{overview}}</div>
 
-   <h1>{{title}}</h1>
-   <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
-   <a href="{{homepage}}">Check Out Movie Homepage</a>
-   <div>{{overview}}</div>
-   <div>
-      <button class="wishlist-button btn" data-id={{id}} data-title={{title}} data-poster={{poster_path}}>Add to
-         Wishlist</button>
-      <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">Add to
-         Watchedlist</button>
-   </div>
-   {{else}}
+      <a class="waves-effect waves-light btn-small orange" id="wishlistBtn" data-id="{{id}}" data-title="{{title}}"
+         data-poster="{{poster_path}}">
+         <i class="material-icons left">add</i>Add to Wishlist</a></button>
 
-   Sorry, No Movie Found By This ID
+      <a class="waves-effect waves-light btn-small orange" id="watchedlistBtn" data-id="{{id}}" data-title="{{title}}"
+         data-poster="{{poster_path}}">
+         <i class="material-icons left">check</i>Add to Watchedlist</a></button>
 
-   {{/if}}
+      <a class="waves-effect waves-light btn-small orange" id="trailerBtn" data-id="{{id}}" data-title="{{title}}"
+         data-poster="{{poster_path}}">
+         <i class="material-icons left">play_arrow</i>Watch Trailer</a></button>
+
+      <a class="waves-effect waves-light btn-small orange" id="trailerBtn" data-id="{{id}}" data-title="{{title}}"
+         data-poster="{{poster_path}}">
+         <i class="material-icons left">movie</i>Movie Info<a href="{{homepage}}"></a></button><br><br>
+         </div>
+         {{else}}
+
+         Sorry, No Movie Was Found By This ID
+
+         {{/if}}
+   </center>
 </main>
 <!-- Example data
 { adult: false,                                                                                             
