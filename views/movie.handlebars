@@ -3,7 +3,8 @@
    <center>
       <h3>{{title}}</h3>
       <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
-
+      {{!-- needs to be accurately moved to LINE 23 --}}
+      <a href="{{homepage}}">Check Out Movie Homepage</a> 
       <div>{{overview}}</div>
 
       <a class="waves-effect waves-light btn-small orange" id="wishlistBtn" data-id="{{id}}" data-title="{{title}}"
@@ -20,7 +21,7 @@
 
       <a class="waves-effect waves-light btn-small orange" id="trailerBtn" data-id="{{id}}" data-title="{{title}}"
          data-poster="{{poster_path}}">
-            <i class="material-icons left">movie</i>Movie Info</a><a href="{{homepage}}"></a></button><br><br>
+         <i class="material-icons left">movie</i>Movie Info<a href="{{homepage}}"></a></button><br><br>
          </div>
          {{else}}
 
