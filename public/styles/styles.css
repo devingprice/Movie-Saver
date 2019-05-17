@@ -323,7 +323,7 @@ footer {
   padding: 10px;
 }
 
-#wishlist {
+#wishlist, #watchedlist {
 font-family: 'Fjalla One', sans-serif !important;
 text-shadow: 2px 2px #ffa733 !important;
 color: #444 !important;
@@ -335,11 +335,19 @@ font-size: 40px !important;
   border-radius: 25px;
 }
 
+#recTitle, #sumTitle {
+  font-family: 'Fjalla One', sans-serif !important; 
+  text-shadow: 2px 2px #ffa733 !important;
+  color: #444 !important;
+  font-weight: bold !important;
+  font-size: 40px !important;
+  text-align: center !important;
+}
+
 .trailerDiv {
   position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 25px;
-  height: 0;
+  padding-top: 25px;
   width: 100%;
   margin-top: 50px;
   margin-left: 20px;

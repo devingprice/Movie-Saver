@@ -80,20 +80,19 @@
 <script>
    $(document).ready(function () {
 
-      getRecommendations({{id}}, function(data){
+      getRecommendations({{ id }}, function (data) {
          console.log(data);
 
          var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1 rcorners1 vcenter shad'>Similar Movies</div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
-            "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
-            "' alt='" + element.title + 
-            "'>"
+               "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
+               "' alt='" + element.title +
+               "'>"
          })
          htmlHolder += "</div></div></div></div>";
 
          $("#recommended").html(htmlHolder)
-
          var swiper = new Swiper(".swiper-container", {
             effect: "coverflow",
             initialSlide: 2,
@@ -112,49 +111,50 @@
                el: ".swiper-pagination"
             }
          });
+         
          $(".poster").click("on", function () {
             window.location.href = "/movie/" + $(this).attr("data-id");
          })
       })
 
-      {{#if isLoggedIn }}
-         requestList("watchedList", function (data) {
-            data.map(movie => {
-               var foundInResults = {{ id }} === parseInt(movie.apiId);
+   {{#if isLoggedIn }}
+   requestList("watchedList", function (data) {
+      data.map(movie => {
+         var foundInResults = {{id}} === parseInt(movie.apiId);
 
-               if (foundInResults) {
-                  $("#buttons").children(".watchedlist-button")
-                     .text("Remove from Watched List").addClass("orange lighten-1")
-               }
-            })
+      if (foundInResults) {
+         $("#buttons").children(".watchedlist-button")
+            .text("Remove from Watched List").addClass("orange lighten-1")
+      }
+   })
          })
 
-         requestList("wishList", function (data) {
-            data.map(movie => {
-               var foundInResults = {{ id }} === parseInt(movie.apiId);
-               if (foundInResults) {
-                  $("#buttons").children(".wishlist-button")
-                     .text("Remove from Wish List").addClass("orange lighten-1")
-               }
-            })
+   requestList("wishList", function (data) {
+      data.map(movie => {
+         var foundInResults = {{id}} === parseInt(movie.apiId);
+      if (foundInResults) {
+         $("#buttons").children(".wishlist-button")
+            .text("Remove from Wish List").addClass("orange lighten-1")
+      }
+   })
          })
-      {{/if}}
-   });
-
-   $(document).ready(function () {
-      var movie = $("#title-to-grab").text();
-      var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movie + "officialtrailer&h&key=AIzaSyAQkg4udR1aCSogaSzSCYfJbAO0pa_GSx4";
-      console.log(queryURL)
-      $.ajax({
-         url: queryURL,
-         method: "GET"
-      }).then(function (response) {
-         console.log(response.items[0].id.videoId);
-         var video = response.items[0].id.videoId;
-         var videoURL = "https://www.youtube.com/embed/" + video;
-         console.log(videoURL);
-         var videoPlay = $("#youtubeVideo").attr("src", videoURL);
+   {{/if}}
       });
-   });
-   
+
+      $(document).ready(function () {
+         var movie = $("#title-to-grab").text();
+         var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movie + "officialtrailer&h&key=AIzaSyAQkg4udR1aCSogaSzSCYfJbAO0pa_GSx4";
+         console.log(queryURL)
+         $.ajax({
+            url: queryURL,
+            method: "GET"
+         }).then(function (response) {
+            console.log(response.items[0].id.videoId);
+            var video = response.items[0].id.videoId;
+            var videoURL = "https://www.youtube.com/embed/" + video;
+            console.log(videoURL);
+            var videoPlay = $("#youtubeVideo").attr("src", videoURL);
+         });
+      });
+
 </script>
