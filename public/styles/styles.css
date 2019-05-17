@@ -6,7 +6,7 @@ html, body {
 }
 
 .poster {
-  height: auto;
+  height: 400px;
   width: 345.5px;
   text-align: center;
 }
@@ -55,8 +55,6 @@ nav.top-nav {
 
 }
 
-
-
 .iCon {
   font-size: 50px !important;
 }
@@ -69,7 +67,6 @@ nav.top-nav {
   text-align: center !important;
   padding: 10px;
 }
-
 
 a.sidenav-trigger.top-nav {
   position: absolute ;
@@ -120,7 +117,6 @@ h1 {
   color: white !important;
 }
 
-
 .waves-effect:active {
   background: #ffaf42 !important;
   color: white !important;
@@ -132,9 +128,6 @@ h1 {
 .sidelinks:hover i{
   color:white;
 }
-
-
-
 
 header, main, footer {
   margin-left: 300px;
@@ -209,6 +202,3 @@ footer {
   height: 500px;
   width:300px;
 }
-/* #movieTitle {
-  text-shadow: 2px 2px #ffa733;
-} */
