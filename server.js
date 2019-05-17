@@ -21,11 +21,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Handlebars
+// var hbs = exphbs.create({
+//   helpers: require("./config/handlebarsHelper"),
+//   defaultLayout: "main"
+// });
 app.engine(
   "handlebars",
   exphbs({
     defaultLayout: "main"
   })
+  // hbs.engine
 );
 app.set("view engine", "handlebars");
 
