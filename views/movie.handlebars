@@ -69,7 +69,7 @@
       getRecommendations({{id}}, function(data){
          console.log(data);
 
-         var htmlHolder = "<div class='swiper-container'><div class='swiper-wrapper'>";
+         var htmlHolder = "<h2>Similar Movies</h2><div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
             "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
