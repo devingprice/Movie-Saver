@@ -79,6 +79,27 @@
          htmlHolder += "</div></div>";
 
          $("#recommended").html(htmlHolder)
+
+         var swiper = new Swiper(".swiper-container", {
+            effect: "coverflow",
+            initialSlide: 2,
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+               rotate: 50,
+               stretch: 0,
+               depth: 100,
+               modifier: 1,
+               slideShadows: true
+            },
+            pagination: {
+               el: ".swiper-pagination"
+            }
+         });
+         $(".poster").click("on", function () {
+            window.location.href = "/movie/" + $(this).attr("data-id");
+         })
       })
 
       {{#if isLoggedIn }}
