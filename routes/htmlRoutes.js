@@ -98,12 +98,11 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/search/:title/:type?", function(req, res) {
+  app.get("/search/:title?", function(req, res) {
     var title = req.params.title;
-    //var type = req.params.type || "movie";
+    var searchTerm = req.query.q || title;
 
-    //omdb.search(title, type, function(data) {
-    omdb.searchMovie(title, function(data) {
+    omdb.searchMovie(searchTerm, function(data) {
       console.log(data);
       if (data.results.length > 0) {
         data.hasResults = true;
