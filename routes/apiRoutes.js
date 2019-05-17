@@ -113,7 +113,7 @@ module.exports = function(app, passport) {
     db.WishList.destroy({
       where: {
         id: req.params.id,
-        userId: req.session.passport.user
+        UserId: req.session.passport.user
       }
     }).then(function(dbWishList) {
       res.json(dbWishList);
