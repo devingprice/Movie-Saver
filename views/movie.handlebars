@@ -16,7 +16,7 @@
                <span>{{name}} | </span>
                {{/each}}
             </p>
-            <a href="{{homepage}}">Check Out Movie Homepage</a>
+            
 
             {{#if isLoggedIn}}
             <div id="buttons">
@@ -41,7 +41,9 @@
                   <i class="material-icons left">play_arrow</i>Watch Trailer
                </button>
                <button class="homepage-link waves-effect waves-light btn-small orange" data-title="{{title}}">
-                  <i class="material-icons left">movie</i>Movie Website<a href="{{homepage}}">
+                  <a href="{{homepage}}">
+                  <i class="material-icons left">movie</i>Movie Website
+                  </a>
                </button>
             </div>
          </div>
