@@ -5,7 +5,7 @@
       <div class="movie-header">
          <img src="http://image.tmdb.org/t/p/w185{{poster_path}}"></img>
          <div class="movie-header-info">
-            <h1> <span id="title-to-grab">{{title}}</span>  <span>{{release_date}}</span> </h1>
+            <h1> <span id="title-to-grab">{{title}}</span> <span>{{release_date}}</span> </h1>
             <h4>{{tagline}}</h4>
             <p>
                <span>Runtime: {{runtime}} </span>
@@ -16,16 +16,16 @@
                <span>{{name}} | </span>
                {{/each}}
             </p>
-            
+
 
             {{#if isLoggedIn}}
             <div id="buttons">
-               <button class="wishlist-button waves-effect waves-light btn-small orange" data-id="{{id}}" data-title="{{title}}"
-                  data-poster="{{poster_path}}">
+               <button class="wishlist-button waves-effect waves-light btn-small orange" data-id="{{id}}"
+                  data-title="{{title}}" data-poster="{{poster_path}}">
                   <i class="material-icons left">add</i>Add to Wishlist
                </button>
-               <button class="watchedlist-button waves-effect waves-light btn-small orange" data-id="{{id}}" data-title="{{title}}"
-                  data-poster="{{poster_path}}">
+               <button class="watchedlist-button waves-effect waves-light btn-small orange" data-id="{{id}}"
+                  data-title="{{title}}" data-poster="{{poster_path}}">
                   <i class="material-icons left">add</i>Add to Watchedlist</a>
                </button>
             </div>
@@ -41,7 +41,7 @@
             <div>
                <button class="homepage-link waves-effect waves-light btn-small orange" data-title="{{title}}">
                   <a href="{{homepage}}">
-                  <i class="material-icons left">movie</i>Movie Website
+                     <i class="material-icons left">movie</i>Movie Website
                   </a>
                </button>
             </div>
@@ -50,9 +50,11 @@
 
 
       <div>{{overview}}</div>
-<br>
-      <div class="trailerDiv"><iframe id="youtubeVideo" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-
+      <br>
+      <center>
+         <div class="trailerDiv"><iframe id="youtubeVideo" width="560" height="315" frameborder="0"
+               allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      </center>
       <div id="recommended"></div>
 
       {{else}}
@@ -62,63 +64,85 @@
       {{/if}}
    </div>
 </main>
-
+<h2>
+   <id="recTitle">Recommended Movies
+</h2>
+</id>
 <script>
    $(document).ready(function () {
 
-      getRecommendations({{id}}, function(data){
+      getRecommendations({{ id }}, function (data) {
          console.log(data);
 
-         var htmlHolder = "<h2>Similar Movies</h2><div class='swiper-container'><div class='swiper-wrapper'>";
+         var htmlHolder = "<div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
-            "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
-            "' alt='" + element.title + 
-            "'>"
+               "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
+               "' alt='" + element.title +
+               "'>"
          })
          htmlHolder += "</div></div>";
 
          $("#recommended").html(htmlHolder)
+         var swiper = new Swiper(".swiper-container", {
+            effect: "coverflow",
+            initialSlide: 2,
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+               rotate: 50,
+              stretch: 0,
+               depth: 100,
+               modifier: 1,
+               slideShadows: true
+            },
+            pagination: {
+               el: ".swiper-pagination"
+            }
+         });
       })
 
-      {{#if isLoggedIn }}
-         requestList("watchedList", function (data) {
-            data.map(movie => {
-               var foundInResults = {{ id }} === parseInt(movie.apiId);
+   { { #if isLoggedIn } }
+   requestList("watchedList", function (data) {
+      data.map(movie => {
+         var foundInResults = {{id}} === parseInt(movie.apiId);
 
-               if (foundInResults) {
-                  $("#buttons").children(".watchedlist-button")
-                     .text("Remove from Watched List").addClass("orange lighten-1")
-               }
-            })
+      if (foundInResults) {
+         $("#buttons").children(".watchedlist-button")
+            .text("Remove from Watched List").addClass("orange lighten-1")
+      }
+   })
          })
 
-         requestList("wishList", function (data) {
-            data.map(movie => {
-               var foundInResults = {{ id }} === parseInt(movie.apiId);
-               if (foundInResults) {
-                  $("#buttons").children(".wishlist-button")
-                     .text("Remove from Wish List").addClass("orange lighten-1")
-               }
-            })
+   requestList("wishList", function (data) {
+      data.map(movie => {
+         var foundInResults = {{id}} === parseInt(movie.apiId);
+      if (foundInResults) {
+         $("#buttons").children(".wishlist-button")
+            .text("Remove from Wish List").addClass("orange lighten-1")
+      }
+   })
          })
-      {{/if}}
-   });
-
-   $(document).ready(function () {
-      var movie = $("#title-to-grab").text();
-      var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movie + "officialtrailer&h&key=AIzaSyAQkg4udR1aCSogaSzSCYfJbAO0pa_GSx4";
-      console.log(queryURL)
-      $.ajax({
-         url: queryURL,
-         method: "GET"
-      }).then(function (response) {
-         console.log(response.items[0].id.videoId);
-         var video = response.items[0].id.videoId;
-         var videoURL = "https://www.youtube.com/embed/" + video;
-         console.log(videoURL);
-         var videoPlay = $("#youtubeVideo").attr("src", videoURL);
+   {
+      {
+         /if}}
       });
-   });
-   
+
+      $(document).ready(function () {
+         var movie = $("#title-to-grab").text();
+         var queryURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + movie + "officialtrailer&h&key=AIzaSyAQkg4udR1aCSogaSzSCYfJbAO0pa_GSx4";
+         console.log(queryURL)
+         $.ajax({
+            url: queryURL,
+            method: "GET"
+         }).then(function (response) {
+            console.log(response.items[0].id.videoId);
+            var video = response.items[0].id.videoId;
+            var videoURL = "https://www.youtube.com/embed/" + video;
+            console.log(videoURL);
+            var videoPlay = $("#youtubeVideo").attr("src", videoURL);
+         });
+      });
+
 </script>
