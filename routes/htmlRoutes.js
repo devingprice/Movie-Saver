@@ -64,6 +64,8 @@ module.exports = function(app) {
       if (req.isAuthenticated()) {
         data.isLoggedIn = req.isAuthenticated();
       }
+      // eslint-disable-next-line camelcase
+      data.release_date = data.release_date.substring(0, 4);
       res.render("movie", data);
     });
   });
@@ -111,6 +113,13 @@ module.exports = function(app) {
         data.isLoggedIn = req.isAuthenticated();
         console.log("is logged in ");
       }
+
+      data.results.forEach(element => {
+        if (element.poster_path === "") {
+          // eslint-disable-next-line camelcase
+          element.poster_path = false;
+        }
+      });
       res.render("search", data);
     });
   });

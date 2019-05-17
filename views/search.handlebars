@@ -49,6 +49,7 @@
     })
     {{/each}}
 
+    {{#if isLoggedIn }}
     requestList("watchedList", function (data) {
       data.map(movie => {
         var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
@@ -70,5 +71,6 @@
         }
       })
     })
+    {{/if}}
   });
 </script>

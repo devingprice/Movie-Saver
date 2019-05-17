@@ -43,6 +43,19 @@ function deleteFromList(listname, id, isApiId = false, cb) {
   });
 }
 
+function getRecommendations(id, cb) {
+  $.ajax({
+    method: "get",
+    url: "/api/recommendations/" + id
+  })
+    .then(function(data) {
+      cb(data);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
+}
+
 $(".wishlist-button").on("click", function(event) {
   var $buttonRef = $(this);
   var title = $(this).attr("data-title");

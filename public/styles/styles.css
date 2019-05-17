@@ -55,8 +55,6 @@ nav.top-nav {
 
 }
 
-
-
 .iCon {
   font-size: 50px !important;
 }
@@ -70,7 +68,6 @@ nav.top-nav {
   text-align: center !important;
   padding: 10px;
 }
-
 
 a.sidenav-trigger.top-nav {
   position: absolute ;
@@ -121,7 +118,6 @@ h1 {
   color: white !important;
 }
 
-
 .waves-effect:active {
   background: #ffaf42 !important;
   color: white !important;
@@ -133,9 +129,6 @@ h1 {
 .sidelinks:hover i{
   color:white;
 }
-
-
-
 
 header, main, footer {
   margin-left: 300px;

@@ -1,4 +1,5 @@
 var db = require("../models");
+var omdb = require("../controllers/omdb.controller");
 
 module.exports = function(app, passport) {
   app.post(
@@ -116,6 +117,12 @@ module.exports = function(app, passport) {
       }
     }).then(function(dbWishList) {
       res.json(dbWishList);
+    });
+  });
+
+  app.get("/api/recommendations/:id", function(req, res) {
+    omdb.recommendations(req.params.id, function(data) {
+      res.json(data);
     });
   });
 };
