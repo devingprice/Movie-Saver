@@ -191,3 +191,8 @@ footer {
   height: 70px;
   width: 70px;
 }
+
+#movieCard {
+  height: 500px;
+  width:300px;
+}
