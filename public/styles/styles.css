@@ -32,7 +32,8 @@ html, body {
 }
 
 .title {
-  font-family: 'Heebo', sans-serif;
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 2px 2px #ffa733;
   color: #444;
   font-weight: bold;
   font-size: 40px;
@@ -109,6 +110,9 @@ h1 {
 .sidelinks {
   color: #444 !important;
   text-decoration: none;
+  align: center;
+  /* font-family: 'Fjalla One', sans-serif;
+  text-shadow: 2px 2px #ffa733; */
 }
 
 .waves-effect:hover {
@@ -165,7 +169,8 @@ main {
 
 body {
   background: #fff;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: 'Fjalla One', sans-serif;
+  /* font-family: Helvetica Neue, Helvetica, Arial, sans-serif; */
   font-size: 14px;
   color:#000;
   margin: 0;
@@ -199,3 +204,11 @@ footer {
   height: 70px;
   width: 70px;
 }
+
+#movieCard {
+  height: 500px;
+  width:300px;
+}
+/* #movieTitle {
+  text-shadow: 2px 2px #ffa733;
+} */

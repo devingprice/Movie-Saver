@@ -20,13 +20,14 @@
 
             {{#if isLoggedIn}}
             <div id="buttons">
-               <button class="wishlist-button btn" data-id="{{id}}" data-title="{{title}}"
-                  data-poster="{{poster_path}}">Add to
-                  Wishlist</button>
-               <button class="watchedlist-button btn" data-id="{{id}}" data-title="{{title}}"
-                  data-poster="{{poster_path}}">Add
-                  to
-                  Watchedlist</button>
+               <button class="wishlist-button waves-effect waves-light btn-small orange" data-id="{{id}}" data-title="{{title}}"
+                  data-poster="{{poster_path}}">
+                  <i class="material-icons left">add</i>Add to Wishlist
+               </button>
+               <button class="watchedlist-button waves-effect waves-light btn-small orange" data-id="{{id}}" data-title="{{title}}"
+                  data-poster="{{poster_path}}">
+                  <i class="material-icons left">add</i>Add to Watchedlist
+               </button>
             </div>
             {{else}}
             <div>
@@ -35,6 +36,14 @@
             </div>
             {{/if}}
 
+            <div>
+               <button class="trailer-btn waves-effect waves-light btn-small orange" data-title="{{title}}">
+                  <i class="material-icons left">play_arrow</i>Watch Trailer
+               </button>
+               <button class="homepage-link waves-effect waves-light btn-small orange" data-title="{{title}}">
+                  <i class="material-icons left">movie</i>Movie Website<a href="{{homepage}}">
+               </button>
+            </div>
          </div>
       </div>
 
