@@ -2,25 +2,6 @@ var omdb = require("../controllers/omdb.controller");
 
 module.exports = function(app) {
   app.get("/", function(req, res) {
-    // //old way was going to use a different page when signed in
-    // if (req.isAuthenticated()) {
-    //   var user = {
-    //     id: req.session.passport.user,
-    //     isLoggedIn: req.isAuthenticated()
-    //   };
-    //   console.log("Authenticated", user);
-    //   res.render("index", user);
-    // } else {
-    //   console.log("NOT Authenticated");
-    //   omdb.trending(function(data) {
-    //     //console.log(data);
-    //     if (data.results.length > 0) {
-    //       data.hasResults = true;
-    //     }
-    //     res.render("index", data);
-    //   });
-    //   //res.render("index");
-    // }
     var user = null;
     if (req.isAuthenticated()) {
       user = {
@@ -36,21 +17,23 @@ module.exports = function(app) {
     if (user) {
       results.isLoggedIn = user.isLoggedIn;
     }
-    omdb.trending(function (trendingData) {
-      if (trendingData.results.length > 0) {
-        trendingData.hasResults = true;
-      }
+
+    omdb.trending(function(trendingData) {
       results.trending = trendingData;
 
-      omdb.upcoming(function(upcomingData){
-        if (upcomingData.results.length > 0) {
-          upcomingData.hasResults = true;
-        }
-        results.upcoming = upcomingData;
+      omdb.nowPlaying(function(nowPlayingData) {
+        results.nowPlaying = nowPlayingData;
 
-        res.render("index", results);
-      })
-     
+        omdb.topRated(function(topRatedData) {
+          results.topRated = topRatedData;
+
+          omdb.upcoming(function(upcomingData) {
+            results.upcoming = upcomingData;
+
+            res.render("index", results);
+          });
+        });
+      });
     });
   });
 
@@ -115,18 +98,18 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/search/:title/:type?", function(req, res) {
+  app.get("/search/:title?", function(req, res) {
     var title = req.params.title;
-    //var type = req.params.type || "movie";
+    var searchTerm = req.query.q || title;
 
-    //omdb.search(title, type, function(data) {
-    omdb.searchMovie(title, function(data) {
+    omdb.searchMovie(searchTerm, function(data) {
       console.log(data);
       if (data.results.length > 0) {
         data.hasResults = true;
       }
       if (req.isAuthenticated()) {
         data.isLoggedIn = req.isAuthenticated();
+        console.log("is logged in ");
       }
       res.render("search", data);
     });
