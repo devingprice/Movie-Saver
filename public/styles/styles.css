@@ -6,7 +6,7 @@ html, body {
 }
 
 .poster {
-  height: auto;
+  height: 400px;
   width: 345.5px;
   text-align: center;
 }
