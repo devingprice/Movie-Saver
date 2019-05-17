@@ -64,6 +64,8 @@ module.exports = function(app) {
       if (req.isAuthenticated()) {
         data.isLoggedIn = req.isAuthenticated();
       }
+      // eslint-disable-next-line camelcase
+      data.release_date = data.release_date.substring(0, 4);
       res.render("movie", data);
     });
   });
