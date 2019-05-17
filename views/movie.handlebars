@@ -30,7 +30,7 @@
                </button>
             </div>
             {{/if}}
-            
+
             {{#unless isLoggedIn}}
             <div>
                <span>Sign in to add to your lists!</span>
@@ -53,7 +53,7 @@
 <br>
       <div class="trailerDiv"><iframe id="youtubeVideo" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
-
+      <div id="recommended"></div>
 
       {{else}}
 
@@ -65,6 +65,22 @@
 
 <script>
    $(document).ready(function () {
+
+      getRecommendations({{id}}, function(data){
+         console.log(data);
+
+         var htmlHolder = "<h2>Similar Movies</h2><div class='swiper-container'><div class='swiper-wrapper'>";
+         data.results.map(element => {
+            htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
+            "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
+            "' alt='" + element.title + 
+            "'>"
+         })
+         htmlHolder += "</div></div>";
+
+         $("#recommended").html(htmlHolder)
+      })
+
       {{#if isLoggedIn }}
          requestList("watchedList", function (data) {
             data.map(movie => {
