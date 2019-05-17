@@ -10,7 +10,7 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
       {{#each trending.results}}
-        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
+        <img class="poster swiper-slide" data-id="{{id}}"src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{title}}">
       {{/each}}
       </div>
     </div>
@@ -30,7 +30,7 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
       {{#each topRated.results}}
-        <img class="poster swiper-slide" data-id="{{id}}"src="http://image.tmdb.org/t/p/w185{{poster_path}}" alt="{{title}}">
+        <img class="poster swiper-slide" data-id="{{id}}"src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{title}}">
       {{/each}}
       </div>
     </div>
@@ -69,7 +69,7 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         {{#each upcoming.results}}
-        <img class="poster swiper-slide" data-id="{{id}}" src="http://image.tmdb.org/t/p/w185{{poster_path}}"
+        <img class="poster swiper-slide" data-id="{{id}}" src="https://image.tmdb.org/t/p/original{{poster_path}}"
           alt="{{title}}">
         {{/each}}
       </div>
@@ -81,7 +81,6 @@
 </main>
 
 
-{{!-- <script src="../dist/js/swiper.min.js"></script> --}}
 <script>
   //<a href="/movie/{{id}}">
   $(".poster").click("on", function(){
