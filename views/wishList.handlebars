@@ -46,6 +46,7 @@
     deleteFromList("wishList", id, false, function (data) {
       console.log("delete from wish return", data)
       $searchCont.remove();
+      M.toast({html: "You've Removed From Wishlist"});
     })
   })
 
@@ -58,10 +59,12 @@
 
       addToList("watchedList", { id, title, poster }, function (data) {
         console.log("add to watched return", data);
+        M.toast({html: "You Moved This Movie"});
       });
       deleteFromList("wishList", id, false, function (data) {
         console.log("delete from wish return", data)
         $searchCont.remove();
+        M.toast({html: "You've Removed A Movie"});
       })
     })
 </script>

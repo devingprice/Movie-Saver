@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
-console.log("Loaded index.js");
+// console.log("Loaded index.js");
 
 function requestList(listname, cb) {
   console.log("ran request list");

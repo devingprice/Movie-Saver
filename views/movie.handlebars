@@ -4,13 +4,13 @@
 
 		<div class="">
 			<div class="grid-x">
-				<div class="cell medium-5 small-12 vcenter"><img class="poster center_image" src="https://image.tmdb.org/t/p/original{{poster_path}}">
+				<div class="cell medium-5 small-12 vcenter"><img class="poster center_image shad" src="https://image.tmdb.org/t/p/original{{poster_path}}">
 				</div>
 
 
-				<div class="cell medium-7">
+				<div class="cell medium-7 summary">
 					<div class="grid-x">
-						<div class="cell orange lighten-1">
+						<div class="cell orange lighten-1 rcorners1 shad">
 
 							<div class="dataTitle vcenter">{{title}} <span class="date">({{release_date}})</span></div>
 
@@ -33,7 +33,7 @@
 							</div>
 
 
-							<h4 class="vcenter">{{tagline}}</h4>
+							<h4 class="vcenter summary">{{tagline}}</h4>
 						</div>
 					</div>
 					{{#if isLoggedIn}}
@@ -52,20 +52,19 @@
 							<button class="trailer-btn waves-effect waves-light btn-small orange btns" data-title="{{title}}"><i class="material-icons left">play_arrow</i>Watch Trailer</button> <button class="homepage-link waves-effect waves-light btn-small orange btns" data-title="{{title}}"><a href="{{homepage}}"><i class="material-icons left">movie</i>Movie Website</a></button>
 						</div>
 					</div>
-
-
-					<div class="summary">
-						{{overview}}
-					</div>
-				</div>
-				{{#unless isLoggedIn}}
+{{#unless isLoggedIn}}
 
 				<div class="grid-x ">
-					<div class="cell medium-6">
-						<span>Sign in to add to your lists!</span> <a class="btn" href="/signin">Sign in</a>
+					<div class="cell medium-6 vcenter">
+						<a class="btn waves-effect waves-light orange btns" href="/signin">Sign in to add to your lists!</a>
 					</div>
 				</div>
 				{{/unless}}
+
+					<div class="summary vcenter">
+						{{overview}}
+					</div>
+				</div>
 			</div>
 			{{else}} Sorry, No Movie Found By This ID {{/if}}
 		</div>

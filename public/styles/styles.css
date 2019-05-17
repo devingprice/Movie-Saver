@@ -226,6 +226,7 @@ footer {
     background: #ffa733;
     border-top: 4px solid grey;
 }
+
 #teamlogo {
   height: 70px;
   width: 70px;
@@ -241,6 +242,12 @@ footer {
 
 .searchTitle {
   text-decoration: none !important;
+}
+.getGrey {
+  background: #ffa733;
+}
+
+.searchTitle {
   font-family: 'Fjalla One', sans-serif;
   text-shadow: 2px 2px #ffa733;
   color: #444;
@@ -295,6 +302,9 @@ footer {
 
 .summary {
   padding: 10px;
+  font-size: 20px;
+  font-weight: 400 !important;
+
 }
 
 
@@ -305,4 +315,16 @@ footer {
 
 .vcenter {
   padding: 10px;
+}
+
+#wishlist {
+font-family: 'Fjalla One', sans-serif !important;
+text-shadow: 2px 2px #ffa733 !important;
+color: #444 !important;
+font-weight: bold !important;
+font-size: 40px !important;
+}
+
+.rcorners1 {
+  border-radius: 25px;
 }
