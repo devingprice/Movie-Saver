@@ -80,6 +80,7 @@
          console.log(data);
 
          var htmlHolder = "<div class='swiper-container'><div class='swiper-wrapper'>";
+         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1 rcorners1 vcenter shad'>Similar Movies</div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
                "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
@@ -87,12 +88,9 @@
                "'>"
          })
          htmlHolder += "</div></div>";
+         htmlHolder += "</div></div></div></div>";
 
          $("#recommended").html(htmlHolder)
-<<<<<<< HEAD
-=======
-
->>>>>>> e906ccdcd3c5bebb573dadf12767928df22a4f6d
          var swiper = new Swiper(".swiper-container", {
             effect: "coverflow",
             initialSlide: 2,
