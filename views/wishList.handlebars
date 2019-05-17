@@ -43,7 +43,7 @@
   $(document).on('click', '.remove-from-wishlist', function () {
     var $searchCont = $(this).closest(".search-result");
     var id = $(this).attr('data-id');
-    deleteFromList("wishList", id, function (data) {
+    deleteFromList("wishList", id, false, function (data) {
       console.log("delete from wish return", data)
       $searchCont.remove();
     })
@@ -59,7 +59,7 @@
       addToList("watchedList", { id, title, poster }, function (data) {
         console.log("add to watched return", data);
       });
-      deleteFromList("wishList", id, function (data) {
+      deleteFromList("wishList", id, false, function (data) {
         console.log("delete from wish return", data)
         $searchCont.remove();
       })

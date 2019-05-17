@@ -32,11 +32,12 @@ function addToList(listname, data, cb) {
   });
 }
 
-function deleteFromList(listname, id, cb) {
+function deleteFromList(listname, id, isApiId = false, cb) {
   console.log("ran delete on list");
+  var urlStub = isApiId ? "/byApiId/" : "/";
   $.ajax({
     method: "delete",
-    url: "/api/" + listname + "/" + id
+    url: "/api/" + listname + urlStub + id
   }).then(function(data) {
     cb(data);
   });
@@ -51,7 +52,7 @@ $(".wishlist-button").on("click", function(event) {
   var isInLists = $(this).hasClass("orange lighten-1");
 
   if (isInLists) {
-    deleteFromList("wishList", id, function(data) {
+    deleteFromList("wishList", id, true, function(data) {
       $buttonRef.removeClass("orange lighten-1");
       $buttonRef.text("Add to Wish List");
     });
@@ -72,7 +73,7 @@ $(".watchedlist-button").on("click", function(event) {
   var isInLists = $(this).hasClass("orange lighten-1");
 
   if (isInLists) {
-    deleteFromList("watchedList", id, function(data) {
+    deleteFromList("watchedList", id, true, function(data) {
       $buttonRef.removeClass("orange lighten-1");
       $buttonRef.text("Add to Watched List");
     });
