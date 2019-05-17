@@ -40,6 +40,7 @@
       deleteFromList("watchedList", id, false, function (data) {
         console.log("delete from watched return", data)
         $searchCont.remove();
+       M.toast({html: "You've Removed A Movie"});
       })
     })
 </script>
