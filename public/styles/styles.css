@@ -193,6 +193,7 @@ footer {
     background: #ffa733;
     border-top: 4px solid grey;
 }
+
 #teamlogo {
   height: 70px;
   width: 70px;
@@ -201,4 +202,24 @@ footer {
 #movieCard {
   height: 500px;
   width:300px;
+}
+
+.getGrey {
+  background: #ffa733;
+}
+
+.searchTitle {
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 2px 2px #ffa733;
+  color: #444;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+#wishlist {
+font-family: 'Fjalla One', sans-serif !important;
+text-shadow: 2px 2px #ffa733 !important;
+color: #444 !important;
+font-weight: bold !important;
+font-size: 40px !important;
 }
