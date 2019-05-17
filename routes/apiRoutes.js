@@ -108,6 +108,20 @@ module.exports = function(app, passport) {
     });
   });
 
+  app.delete("/api/wishList/byApiId/:id", skipIfNotLoggedIn, function(
+    req,
+    res
+  ) {
+    console.log("delete func wishlist by api id");
+    db.WishList.destroy({
+      where: {
+        apiId: req.params.id,
+        UserId: req.session.passport.user
+      }
+    }).then(function(dbWishList) {
+      res.json(dbWishList);
+    });
+  });
   // Delete an example by id
   app.delete("/api/wishList/:id", skipIfNotLoggedIn, function(req, res) {
     db.WishList.destroy({
