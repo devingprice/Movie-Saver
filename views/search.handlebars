@@ -5,19 +5,19 @@
     {{#each results}}
     <li class="search-result">
 
-      <div><img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{poster_path}}" alt="{{title}}"
+      <div><img src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{title}}"
           class="search-poster"></div>
-      <div class="search-info">
+      <div class="">
         <a href="/movie/{{id}}">
-          <h1>{{title}}</h1>
+          <h1 class="searchTitle search-info">{{title}}</h1>
         </a>
-        <div id="buttons-{{id}}">
+        <div id="buttons-{{id}} button">
           {{#if ../isLoggedIn}}
-          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline" data-id="{{id}}"
+          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline" id="btns" data-id="{{id}}"
             data-title="{{title}}" data-poster="{{poster_path}}">
             Add to Wish List
           </a>
-          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline" data-id="{{id}}"
+          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline" id="btns" data-id="{{id}}"
             data-title="{{title}}" data-poster="{{poster_path}}">
             Add to Watched List
           </a>
