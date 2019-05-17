@@ -3,24 +3,30 @@
 
 <head>
 	<meta charset="utf-8">
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+
+	<link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="/styles/listStyle.css" media="screen" title="no title" charset="utf-8">
+	<script src="/js/index.js"></script>
+
+	<title>Movie Saver</title>
+
 	<link href='https://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
 		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-	<script src="/js/index.js"></script>
-	<title>Movie Saver</title>
-
 </head>
 
 <body>
@@ -28,32 +34,36 @@
 	<header>
 		<nav class="orange lighten-1">
 			<div class="nav-wrapper">
-				<form>
+				<form id="search-bar" name="search-bar" method="get" action="/search/movie">
 					<div class="input-field sBar">
-						<input id="search" required="" type="search"> <label class="label-icon" for="search"><i
-								class="material-icons">search</i></label> <i class="material-icons">close</i>
+						<input id="search-term" name="q" type="search"> 
+						<label class="label-icon" for="search-term">
+							<i class="material-icons">search</i>
+						</label> 
+						<i class="material-icons">close</i>
 					</div>
+					<input type="submit" style="display:none" value="">
 				</form>
 			</div>
 		</nav>
 
 
 		<div class="container">
-			<a class="top-nav sidenav-trigger full hide-on-large-only" data-target="slide-out" href="#"><i
-					class="iCon material-icons">menu</i></a>
+			<a class="top-nav sidenav-trigger full hide-on-large-only" data-target="slide-out" href="#">
+				<i class="iCon material-icons">menu</i>
+			</a>
 		</div>
 
 
 		<ul class="sidenav sidenav-fixed" id="slide-out">
-			<li class="center"><img class="logo" src="/styles/images/modified-logo.png">
+			<li class="center">
+				<img class="logo" src="/styles/images/modified-logo.png">
 			</li>
 
 
 			<li>
-				<div class="user-view">
-				</div>
+				<div class="user-view"></div>
 			</li>
-
 
 			<li>
 				<a class="sidelinks waves-effect waves-light" href="/#trending">
@@ -81,23 +91,20 @@
 
 
 
-
-
-
-
-
-
 			<li style="list-style: none">{{#if isLoggedIn }}</li>
 
 
 			<li>
-				<a class="sidelinks waves-effect waves-light" href="/watchedList"><i class="fas fa-film"></i>Watched
-					List</a>
+				<a class="sidelinks waves-effect waves-light" href="/watchedList">
+					<i class="fas fa-film"></i>Watched List
+				</a>
 			</li>
 
 
 			<li>
-				<a class="sidelinks waves-effect waves-light" href="/wishList"><i class="fas fa-heart"></i>Wish List</a>
+				<a class="sidelinks waves-effect waves-light" href="/wishList">
+					<i class="fas fa-heart"></i>Wish List
+				</a>
 			</li>
 
 
@@ -114,23 +121,25 @@
 				<li style="list-style: none">{{else}}</li>
 			</div>
 			<div class="bot">
-				<div class="divider">
-				</div>
-
-
+				<div class="divider"></div>
 
 				<!-- Login Trigger -->
-				<li><a href="#modal1" class="sidelinks waves-effect waves-light modal-trigger"><i
-							class="small material-icons account_box"></i>Log-In</a></li>
+				<li>
+					<a href="#modal1" class="sidelinks waves-effect waves-light modal-trigger">
+						<i class="small material-icons account_box"></i>Log-In
+					</a>
+				</li>
 				<!-- Register Trigger -->
-				<li><a href="#modal2" class="sidelinks waves-effect waves-light modal-trigger"><i
-							class="small material-icons modal-trigger account_circle"></i>Register</a></li>
+				<li>
+					<a href="#modal2" class="sidelinks waves-effect waves-light modal-trigger">
+						<i class="small material-icons modal-trigger account_circle"></i>Register
+					</a>
+				</li>
 			</div>
 
 
 			<li style="list-style: none">{{/if}}</li>
 
-			<li></li>
 		</ul>
 	</header>
 
@@ -140,7 +149,7 @@
 		<div class="modal-content">
 			<h5>Sign-In</h5>
 			<p>
-				<form id="signin_modal" name="signin" method="post" action="signin">
+				<form id="signin_modal" name="signin" method="post" action="/signin">
 					<label for="email">Email Address</label>
 					<input class="text" name="email" type="text" />
 					<label for="password">Password</label>
@@ -155,7 +164,7 @@
 		<div class="modal-content">
 			<h4>Register</h4>
 			<p>
-				<form id="register" name="register" method="post" action="/register">
+				<form id="register_modal" name="register" method="post" action="/register">
 					<label for="name">Full Name</label>
 					<input class="text" name="name" type="name" /><br>
 					<label for="email">Email Address</label>
@@ -170,11 +179,16 @@
 
 	{{{body}}}
 
+	<!--<script src="/js/index.js"></script>-->
+
 	<footer class="footer">
-	<p><a href="https://www.themoviedb.org/" target="_blank">
-		<img src="styles/images/TMDB_logo.png" alt="tmdb logo" width="150px"></a>
-	<a href="https://github.com/devingprice/project-2.git/" target="_blank">
-		<img src="styles/images/modified-logo.png" alt="project logo" id="teamlogo"></a>
+		<p>
+			<a href="https://www.themoviedb.org/" target="_blank">
+				<img src="styles/images/TMDB_logo.png" alt="tmdb logo" width="150px">
+			</a>
+			<a href="https://github.com/devingprice/project-2.git/" target="_blank">
+				<img src="styles/images/modified-logo.png" alt="project logo" id="teamlogo">
+			</a>
 		</p>
 	</footer>
 

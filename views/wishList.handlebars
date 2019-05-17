@@ -41,24 +41,27 @@
   });
 
   $(document).on('click', '.remove-from-wishlist', function () {
+    var $searchCont = $(this).closest(".search-result");
     var id = $(this).attr('data-id');
-    deleteFromList("wishList", id, function (data) {
+    deleteFromList("wishList", id, false, function (data) {
       console.log("delete from wish return", data)
-      $(this).closest(".li").remove();
+      $searchCont.remove();
     })
   })
 
   $(document).on('click', '.move-to-watchedlist', function () {
+      var $searchCont = $(this).closest(".search-result");
+      
       var id = $(this).attr('data-id');
       var title = $(this).attr('data-title');
       var poster = $(this).attr('data-poster');
 
-      addToList("wishList", { id, title, poster }, function (data) {
+      addToList("watchedList", { id, title, poster }, function (data) {
         console.log("add to watched return", data);
       });
-      deleteFromList("wishList", id, function (data) {
+      deleteFromList("wishList", id, false, function (data) {
         console.log("delete from wish return", data)
-        $(this).closest(".li").remove();
+        $searchCont.remove();
       })
     })
 </script>

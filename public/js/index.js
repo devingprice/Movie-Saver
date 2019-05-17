@@ -2,18 +2,17 @@
 /* eslint-disable no-unused-vars */
 console.log("Loaded index.js");
 
-
 function requestList(listname, cb) {
   console.log("ran request list");
   $.ajax({
     method: "get",
     url: "/api/" + listname
   })
-    .then(function (data) {
+    .then(function(data) {
       console.log(data);
       cb(data);
     })
-    .catch(function (err) {
+    .catch(function(err) {
       console.log(err);
     });
 }
@@ -28,65 +27,65 @@ function addToList(listname, data, cb) {
       title: data.title,
       poster: data.poster
     }
-  }).then(function (data) {
+  }).then(function(data) {
     cb(data);
   });
 }
 
-function deleteFromList(listname, id, cb) {
+function deleteFromList(listname, id, isApiId = false, cb) {
   console.log("ran delete on list");
+  var urlStub = isApiId ? "/byApiId/" : "/";
   $.ajax({
     method: "delete",
-    url: "/api/" + listname + "/" + id
-  }).then(function (data) {
+    url: "/api/" + listname + urlStub + id
+  }).then(function(data) {
     cb(data);
   });
 }
 
 $(".wishlist-button").on("click", function(event) {
-  console.log("clicked wishlist");
+  var $buttonRef = $(this);
   var title = $(this).attr("data-title");
   var id = $(this).attr("data-id");
   var poster = $(this).attr("data-poster");
 
-  var hasRed = $(this).hasClass("red");
+  var isInLists = $(this).hasClass("orange lighten-1");
 
-  if(hasRed){
-    deleteFromList("wishList", id, function (data) {
-      $(this).removeClass("red");
-      $(this).text("Add to Wishlist");
+  if (isInLists) {
+    deleteFromList("wishList", id, true, function(data) {
+      $buttonRef.removeClass("orange lighten-1");
+      $buttonRef.text("Add to Wish List");
     });
   } else {
-    addToList("wishList", { id, title, poster }, function(data){
-      $(this).addClass("red", true);
-      $(this).text("Remove from Wishlist!");
+    addToList("wishList", { id, title, poster }, function(data) {
+      $buttonRef.addClass("orange lighten-1", true);
+      $buttonRef.text("Remove from Wish List");
     });
   }
 });
 
-$(".watchedlist-button").on("click", function (event) {
-  console.log("clicked wishlist");
-
+$(".watchedlist-button").on("click", function(event) {
+  var $buttonRef = $(this);
   var title = $(this).attr("data-title");
   var id = $(this).attr("data-id");
   var poster = $(this).attr("data-poster");
 
-  var hasRed = $(this).hasClass("red");
+  var isInLists = $(this).hasClass("orange lighten-1");
 
-  if (hasRed) {
-    deleteFromList("watchedList", id, function (data) {
-      $(this).removeClass("red");
-      $(this).text("Add to Watched List");
+  if (isInLists) {
+    deleteFromList("watchedList", id, true, function(data) {
+      $buttonRef.removeClass("orange lighten-1");
+      $buttonRef.text("Add to Watched List");
     });
   } else {
-    addToList("watchedList", { id, title, poster }, function (data) {
-      $(this).addClass("red", true);
-      $(this).text("Remove from Watched List!");
+    addToList("watchedList", { id, title, poster }, function(data) {
+      $buttonRef.addClass("orange lighten-1", true);
+      $buttonRef.text("Remove from Watched List");
     });
   }
 });
 
-$(document).ready(function () {
+$(document).ready(function() {
   $(".sidenav").sidenav();
 
   $(".modal").modal();
