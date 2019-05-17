@@ -47,14 +47,21 @@
             </div>
          </div>
       </div>
-
+<h2>
+   <id="sumTitle">Summary
+</h2>
+</id>
 
       <div>{{overview}}</div>
       <br>
       <center>
          <div class="trailerDiv"><iframe id="youtubeVideo" width="560" height="315" frameborder="0"
-               allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+               allow="autoplay; encrypted-media" allowfullscreen></iframe></div><br>
       </center>
+      <h2>
+   <id="recTitle">Recommended Movies
+</h2>
+</id>
       <div id="recommended"></div>
 
       {{else}}
@@ -63,11 +70,9 @@
 
       {{/if}}
    </div>
+   
 </main>
-<h2>
-   <id="recTitle">Recommended Movies
-</h2>
-</id>
+
 <script>
    $(document).ready(function () {
 
@@ -92,7 +97,7 @@
             slidesPerView: "auto",
             coverflowEffect: {
                rotate: 50,
-              stretch: 0,
+               stretch: 0,
                depth: 100,
                modifier: 1,
                slideShadows: true
@@ -103,7 +108,7 @@
          });
       })
 
-   { { #if isLoggedIn } }
+   {{#if isLoggedIn }}
    requestList("watchedList", function (data) {
       data.map(movie => {
          var foundInResults = {{id}} === parseInt(movie.apiId);
@@ -124,9 +129,7 @@
       }
    })
          })
-   {
-      {
-         /if}}
+   {{/if}}
       });
 
       $(document).ready(function () {
