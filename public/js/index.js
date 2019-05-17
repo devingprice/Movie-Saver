@@ -110,10 +110,11 @@ $(document).ready(function() {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
+    shortSwipes: true,
     coverflowEffect: {
-      rotate: 50,
+      rotate: 45,
       stretch: 0,
-      depth: 100,
+      depth: 80,
       modifier: 1,
       slideShadows: true
     },
