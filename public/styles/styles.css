@@ -34,7 +34,7 @@ html, body {
 .title {
   font-family: 'Fjalla One', sans-serif;
   text-shadow: 2px 2px #ffa733;
-  color: #444;
+  color: black;
   font-weight: bold;
   font-size: 40px;
   text-align: center;
@@ -59,8 +59,8 @@ nav.top-nav {
   font-size: 50px !important;
 }
 .logo {
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
 }
 
 .center {
