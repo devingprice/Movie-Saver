@@ -138,28 +138,6 @@ main {
   min-height: calc(100vh - 64px -  94px);
 }
 
-@media only screen and (max-width : 992px) {
-  header, main, footer {
-    margin-left: 0;
-  }
-  nav .nav-wrapper {
-    text-align: center;
-  }
-
-}
-      
-@media only screen and (min-width: 601px) {
-  .row .col.offset-m1 {
-    margin-right: 8.3333333333333%;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .sBar {
-    margin-left: 0px !important;
-  }
-}
-
 body {
   background: #fff;
   font-family: 'Fjalla One', sans-serif;
@@ -194,6 +172,7 @@ footer {
     border-top: 4px solid grey;
 }
 
+/* for footer only */
 #teamlogo {
   height: 70px;
   width: 70px;
@@ -234,6 +213,7 @@ font-size: 40px !important;
   text-align: center !important;
 }
 
+/* TRAILER */
 .trailerDiv {
   position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
@@ -250,4 +230,27 @@ font-size: 40px !important;
   height: 100% !important;
   max-width: 1000px;
   max-height: 583px;
+}
+
+/* RESPONSIVE */
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    margin-left: 0;
+  }
+  nav .nav-wrapper {
+    text-align: center;
+  }
+
+}
+      
+@media only screen and (min-width: 601px) {
+  .row .col.offset-m1 {
+    margin-right: 8.3333333333333%;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .sBar {
+    margin-left: 0px !important;
+  }
 }
