@@ -40,6 +40,14 @@ html, body {
   text-align: center;
 }
 
+#watchedTitle {
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 2px 2px #ffa733;
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+}
+
 .user {
   padding: 0 32px;
   color: #444;
@@ -94,7 +102,12 @@ nav.top-nav h1.header {
 
 h1 {
   font-size: 4.2rem;
-  line-height: 110%
+  line-height: 110%;
+  font-family: 'Fjalla One', sans-serif !important;
+text-shadow: 2px 2px #ffa733 !important;
+color: #444 !important;
+font-weight: bold !important;
+font-size: 40px !important;
 }
 
 .input-fiels:active {

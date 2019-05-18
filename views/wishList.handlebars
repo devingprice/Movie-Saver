@@ -25,11 +25,11 @@
                   "data-id": movie.id,
                   "data-title": movie.title,
                   "data-poster": movie["poster_path"],
-                  "class": "move-to-watchedlist btn"
+                  "class": "move-to-watchedlist grey btn"
                 }).text("Move to Watched List"),
                 $("<button>").attr({
                   "data-id": movie.id,
-                  "class": "remove-from-wishlist btn"
+                  "class": "remove-from-wishlist grey btn"
                 }).text("Remove")
               )
 
@@ -59,7 +59,6 @@
 
       addToList("watchedList", { id, title, poster }, function (data) {
         console.log("add to watched return", data);
-        M.toast({html: "You Moved This Movie"});
       });
       deleteFromList("wishList", id, false, function (data) {
         console.log("delete from wish return", data)
