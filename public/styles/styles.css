@@ -6,6 +6,7 @@ html, body {
 }
 
 .poster {
+  height: 400px;
   width: 345.5px;
   text-align: center;
 }
@@ -33,11 +34,10 @@ html, body {
 .title {
   font-family: 'Fjalla One', sans-serif;
   text-shadow: 2px 2px #ffa733;
-  color: #444;
+  color: black;
   font-weight: bold;
   font-size: 40px;
   text-align: center;
-  padding: 5px;
 }
 
 .user {
@@ -58,11 +58,11 @@ nav.top-nav {
 .iCon {
   font-size: 50px !important;
 }
-.logo {
-  height: 100px;
-  width: 100px;
-}
 
+.logo {
+  height: 140px;
+  width: 140px;
+}
 
 .center {
   text-align: center !important;
@@ -95,7 +95,13 @@ nav.top-nav h1.header {
 
 h1 {
   font-size: 4.2rem;
-  line-height: 110%
+  line-height: 110%;
+  font-family: 'Fjalla One', sans-serif !important;
+  text-shadow: 2px 2px #ffa733 !important;
+  color: black !important;
+  font-weight: bold !important;
+  font-size: 40px !important;
+  padding-top: 5px;
 }
 
 .input-fiels:active {
@@ -139,52 +145,6 @@ main {
   min-height: calc(100vh - 64px -  94px);
 }
 
-@media only screen and (max-width : 992px) {
-  header, main, footer {
-    margin-left: 0;
-  }
-  nav .nav-wrapper {
-    text-align: center;
-  }
-
-}
-      
-@media only screen and (min-width: 601px) {
- 
-
-  .moviePoster{
-    text-align: center;
-  }
-
-  
-}
-
-@media only screen and (max-width: 601px) {
-  .center_image {
-    margin: auto;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .vcenter {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-  }
-
-  .trailerDiv {
-   
-    margin-left: 0px;
-  }
-}
-
-@media only screen and (min-width:992px) {
-  .sBar {
-    margin-left: 0px !important;
-  }
-
- 
-}
-
 body {
   background: #fff;
   font-family: 'Fjalla One', sans-serif;
@@ -205,22 +165,9 @@ body {
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width:325px !important;
-}
+  width:350px !important;
 
-.movieTitle {
-  font-family: 'Fjalla One', sans-serif;  color: #444;
-  font-weight: bold;
-  font-size: 40px;
-  padding: 10px;
 }
-
-.moviePoster {
-  padding: 10px;
-  width: 350px;
-  text-align: center;
-}
-
 
 footer {
     padding-bottom: 2px;
@@ -232,6 +179,7 @@ footer {
     border-top: 4px solid grey;
 }
 
+/* for footer only */
 #teamlogo {
   height: 70px;
   width: 70px;
@@ -241,130 +189,49 @@ footer {
   height: 500px;
   width:300px;
 }
-/* #movieTitle {
-  text-shadow: 2px 2px #ffa733;
-} */
 
-.searchTitle {
-  text-decoration: none !important;
-}
 .getGrey {
   background: #ffa733;
 }
 
-.searchTitle {
-  font-family: 'Fjalla One', sans-serif;
-  text-shadow: 2px 2px #ffa733;
-  color: #444;
-  font-weight: bold;
-  font-size: 40px;
-  padding: 5px;
-}
-
-.searchTitle:hover {
-  opacity: 25%;
-  text-decoration: none !important;
-  font-family: 'Fjalla One', sans-serif;
-  text-shadow: 2px 2px #ffa733;
-
-}
-
-.search-info a{
-  font-family: 'Fjalla One', sans-serif;
-  text-shadow: 2px 2px #ffa733;
-  color: #444 !important;
-}
-
-.btn-small {
-  background: lightgrey !important;
-  text-decoration: none !important;
-}
-
-
-
-.btns {
-  margin: 10px;
-}
-
-.dataTitle {
-  font-size: 60px;
-  text-shadow: 1px 1px 1px #000; 
-}
-
-.date {
-  font-size: 30px;
-  text-shadow: 0px;
-
-}
-
-.poster_image {
-  margin: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-.poster_vcenter {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-.summary {
-  padding: 10px;
-  font-size: 20px;
-  font-weight: 400 !important;
-  
-}
-
-.center_image {
-  float: right;
-}
-
-.vcenter {
-  padding: 10px;
-}
-
-#wishlist, #watchedlist {
-font-family: 'Fjalla One', sans-serif !important;
-text-shadow: 2px 2px #ffa733 !important;
-color: #444 !important;
-font-weight: bold !important;
-font-size: 40px !important;
-}
-
-.rcorners1 {
-  border-radius: 25px;
-}
-
-#recTitle, #sumTitle {
-  font-family: 'Fjalla One', sans-serif !important; 
-  text-shadow: 2px 2px #ffa733 !important;
-  color: #444 !important;
-  font-weight: bold !important;
-  font-size: 40px !important;
-  text-align: center !important;
-}
-
+/* TRAILER */
 .trailerDiv {
   position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
   width: 100%;
 	height: 0;
-  margin-top: 50px;
-  margin-left: 20px;
 }
 
 .trailerDiv iframe {
   position: absolute;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 1000px;
-    max-height: 583px;
-    margin-top: 10px;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 1000px;
+  max-height: 583px;
 }
 
-.trailer {
-  margin-top: 20px;
+/* RESPONSIVE */
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    margin-left: 0;
+  }
+  nav .nav-wrapper {
+    text-align: center;
+  }
 }
+      
+@media only screen and (min-width: 601px) {
+  .row .col.offset-m1 {
+    margin-right: 8.3333333333333%;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .sBar {
+    margin-left: 0px !important;
+  }
+}
+/* cleaned 5/18 -cm */
