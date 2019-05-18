@@ -66,6 +66,7 @@ nav.top-nav {
 .iCon {
   font-size: 50px !important;
 }
+
 .logo {
   height: 140px;
   width: 140px;
@@ -108,6 +109,7 @@ h1 {
   color: black !important;
   font-weight: bold !important;
   font-size: 40px !important;
+  padding-top: 5px;
 }
 
 .input-fiels:active {
@@ -217,15 +219,6 @@ font-size: 40px !important;
 }
 
 
-#recTitle, #sumTitle {
-  font-family: 'Fjalla One', sans-serif !important; 
-  text-shadow: 2px 2px #ffa733 !important;
-  color: #444 !important;
-  font-weight: bold !important;
-  font-size: 40px !important;
-  text-align: center !important;
-}
-
 /* TRAILER */
 .trailerDiv {
   position: relative;
@@ -253,7 +246,6 @@ font-size: 40px !important;
   nav .nav-wrapper {
     text-align: center;
   }
-
 }
       
 @media only screen and (min-width: 601px) {

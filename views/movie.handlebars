@@ -12,7 +12,7 @@
 					<div class="grid-x">
 						<div class="cell orange lighten-1 rcorners1 shad">
 
-							<div class="dataTitle vcenter " id="title-to-grab">{{title}} <span class="date">({{release_date}})</span></div>
+							<div class="dataTitle vcenter " id="title-to-grab"><h1>{{title}} </h1><span class="date">({{release_date}})</span></div>
 
 							
 
@@ -66,7 +66,7 @@
 	</div>
    <div class="grid-x trailer">
       <div class="cell dataTitle orange lighten-1 rcorners1 vcenter shad">
-         Trailer
+         <h1>Trailer</h1>
       </div>
       <div class="cell vcenter">
              <div class="trailerDiv "><iframe id="youtubeVideo" class="poster_vcenter" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
@@ -82,7 +82,7 @@
       getRecommendations({{ id }}, function (data) {
          console.log(data);
 
-         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1 rcorners1 vcenter shad'>Recommended Movies</div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
+         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1 rcorners1 vcenter shad'><h1>Recommended Movies</h1></div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
                "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
