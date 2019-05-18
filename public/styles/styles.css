@@ -104,10 +104,10 @@ h1 {
   font-size: 4.2rem;
   line-height: 110%;
   font-family: 'Fjalla One', sans-serif !important;
-text-shadow: 2px 2px #ffa733 !important;
-color: #444 !important;
-font-weight: bold !important;
-font-size: 40px !important;
+  text-shadow: 2px 2px #ffa733 !important;
+  color: black !important;
+  font-weight: bold !important;
+  font-size: 40px !important;
 }
 
 .input-fiels:active {
