@@ -1,79 +1,90 @@
 <main>
-	<div class="movie-wrapper" style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{backdrop_path}}'">
- 
-		{{#if id}}
+   <div class="movie-wrapper"
+      style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{backdrop_path}}'">
 
-		<div class="backdrop_path">
-			<div class="grid-x">
-				<div class="cell medium-5 small-12 vcenter"><img class="poster center_image shad" src="https://image.tmdb.org/t/p/original{{poster_path}}">
-       
+      {{#if id}}
+
+      <div class="backdrop_path">
+         <div class="grid-x">
+            <div class="cell medium-5 small-12 vcenter"><img class="poster center_image shad"
+                  src="https://image.tmdb.org/t/p/original{{poster_path}}">
+
             </div>
 
 
-				<div class="cell medium-7 summary">
-					<div class="grid-x">
-						<div class="cell orange lighten-1 rcorners1 shad">
+            <div class="cell medium-7 summary">
+               <div class="grid-x">
+                  <div class="cell orange lighten-1  shad">
 
-							<div class="dataTitle vcenter " id="title-to-grab"><h1>{{title}} </h1><span class="date">({{release_date}})</span></div>
-</div>
-					</div>
-
-
-					<div class="grid-x ">
-						<div class="cell">
-							<div class="grid-x">
-                        <div class="cell vcenter makeWhite">
-								<p><span>Runtime: {{runtime}}</span> <span>Budget: ${{budget}}</span></p>
+                     <div class="dataTitle vcenter " id="title-to-grab">
+                        <h1>{{title}} </h1><span class="date">({{release_date}})</span>
+                     </div>
                   </div>
-
-								<div class="cell vcenter makeWhite">
-									<p>{{#each genres}} <span>{{name}} |</span> {{/each}}</p>
-								</div>
-							</div>
+               </div>
 
 
-							<h4 class="vcenter summary makeWhite">{{tagline}}</h4>
-						</div>
-					</div>
-					{{#if isLoggedIn}}
+               <div class="grid-x ">
+                  <div class="cell">
+                     <div class="grid-x">
+                        <div class="cell vcenter makeWhite">
+                           <p><span>Runtime: {{runtime}}</span> <span>Budget: ${{budget}}</span></p>
+                        </div>
 
-					<div class="grid-x ">
-						<div class="cell vcenter">
-							<div id="buttons">
-								<button class="wishlist-button waves-effect waves-light btn-small orange btns" data-id="{{id}}" data-poster="{{poster_path}}" data-title="{{title}}"><i class="material-icons left">add</i>Add to Wishlist</button> <button class="watchedlist-button waves-effect waves-light btn-small orange btns" data-id="{{id}}" data-poster="{{poster_path}}" data-title="{{title}}"><i class="material-icons left">add</i>Add to Watchedlist</button>
-							</div>
-						</div>
-					</div>
-					{{/if}}
+                        <div class="cell vcenter makeWhite">
+                           <p>{{#each genres}} <span>{{name}} |</span> {{/each}}</p>
+                        </div>
+                     </div>
 
-{{#unless isLoggedIn}}
 
-				<div class="grid-x ">
-					<div class="cell medium-6 vcenter">
-						<a class="btn waves-effect waves-light orange btns" href="/signin">Sign in to add to your lists!</a>
-					</div>
-				</div>
-				{{/unless}}
+                     <h4 class="vcenter summary makeWhite">{{tagline}}</h4>
+                  </div>
+               </div>
+               {{#if isLoggedIn}}
 
-					<div class="summary vcenter makeWhite">
-						{{overview}}
-					</div>
-				</div>
-			</div>
-			{{else}} Sorry, No Movie Found By This ID {{/if}}
-		</div>
-	</div>
+               <div class="grid-x ">
+                  <div class="cell vcenter">
+                     <div id="buttons">
+                        <button class="wishlist-button waves-effect waves-light btn-small orange btns" data-id="{{id}}"
+                           data-poster="{{poster_path}}" data-title="{{title}}"><i
+                              class="material-icons left">add</i>Add to Wishlist</button> <button
+                           class="watchedlist-button waves-effect waves-light btn-small orange btns" data-id="{{id}}"
+                           data-poster="{{poster_path}}" data-title="{{title}}"><i
+                              class="material-icons left">add</i>Add to Watchedlist</button>
+                     </div>
+                  </div>
+               </div>
+               {{/if}}
+
+               {{#unless isLoggedIn}}
+
+               <div class="grid-x ">
+                  <div class="cell medium-6 vcenter">
+                     <a class="btn waves-effect waves-light orange btns" href="/signin">Sign in to add to your
+                        lists!</a>
+                  </div>
+               </div>
+               {{/unless}}
+
+               <div class="summary vcenter makeWhite">
+                  {{overview}}
+               </div>
+            </div>
+         </div>
+         {{else}} Sorry, No Movie Found By This ID {{/if}}
+      </div>
+   </div>
    <div class="grid-x trailer">
-      <div class="cell dataTitle orange lighten-1 rcorners1 vcenter shad">
-         <h1>Trailer</h1>
+      <div class="cell dataTitle orange lighten-1  vcenter shad">
+         Trailer
       </div>
       <div class="cell vcenter">
-             <div class="trailerDiv "><iframe id="youtubeVideo" class="poster_vcenter" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+         <div class="trailerDiv "><iframe id="youtubeVideo" class="poster_vcenter" width="560" height="315"
+               frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
 
       </div>
    </div>
 
-      <div id="recommended"></div>
+   <div id="recommended"></div>
 </main>
 <script>
    $(document).ready(function () {
@@ -81,7 +92,7 @@
       getRecommendations({{ id }}, function (data) {
          console.log(data);
 
-         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1 rcorners1 vcenter shad'><h1>Recommended Movies</h1></div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
+         var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1  vcenter shad'>Similar Movies</div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
          data.results.map(element => {
             htmlHolder += "<img class='poster swiper-slide' data-id='" + element.id +
                "' src='https://image.tmdb.org/t/p/original" + element.poster_path +
@@ -109,16 +120,17 @@
                el: ".swiper-pagination"
             }
          });
-         
+
          $(".poster").click("on", function () {
             window.location.href = "/movie/" + $(this).attr("data-id");
          })
       })
 
-   {{#if isLoggedIn }}
+   { { #if isLoggedIn } }
    requestList("watchedList", function (data) {
       data.map(movie => {
-         var foundInResults = {{id}} === parseInt(movie.apiId);
+         var foundInResults = {{ id }
+      } === parseInt(movie.apiId);
 
       if (foundInResults) {
          $("#buttons").children(".watchedlist-button")
@@ -129,14 +141,17 @@
 
    requestList("wishList", function (data) {
       data.map(movie => {
-         var foundInResults = {{id}} === parseInt(movie.apiId);
+         var foundInResults = {{ id }
+      } === parseInt(movie.apiId);
       if (foundInResults) {
          $("#buttons").children(".wishlist-button")
             .text("Remove from Wish List").addClass("orange lighten-1")
       }
    })
          })
-   {{/if}}
+   {
+      {
+         /if}}
       });
 
       $(document).ready(function () {

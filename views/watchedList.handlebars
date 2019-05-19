@@ -1,46 +1,57 @@
 <main>
-  <ul id="watched">
+  <div id="watched">
 
-  </ul>
+  </div>
 </main>
 <script>
   console.log("loaded scripts");
   //make ajax request to /api/watchedList
-  $(document).ready(function() {
+  $(document).ready(function () {
     console.log("ready");
-    requestList("watchedList", function(data) {
+    requestList("watchedList", function (data) {
       console.log("received", data);
       data.map(movie => {
         $("#watched").prepend(
-          $("<li>").attr("class", "search-result").append(
-            $("<div>").append(
-              $("<img>").attr("src", "https://image.tmdb.org/t/p/w185_and_h278_bestv2/" + movie["poster_path"])
+          $("<div class='grid-x search-result'>").append(
+            $("<div class='cell medium-4 small-12'>").append(
+              $("<img class='poster'>").attr("src", "https://image.tmdb.org/t/p/original" + movie["poster_path"]),
             ),
-            $("<div>").attr("class", "search-info").append(
-              $("<a>").attr("href", "/movie/"+movie.apiId).append(
-                $("<h1>").text(movie.title)
+            $("<div>").attr("class", "vcenter cell medium-8 small-12").append(
+              $("<div class='grid-x'>").append(
+                $("<div class='cell small-12'>").append(
+
+                  $("<a>").attr("href", "/movie/" + movie.apiId).append(
+                    $("<h1>").text(movie.title)
+                  )
+                )
               ),
-              $("<div>").append(
-                $("<button>").attr({
-                  "data-id": movie.id,
-                  "class": "remove-from-watchedlist grey btn"
-                }).text("Remove")
+              $("<div class='grid-x'>").append(
+                $("<div class='cell small-12 vcenter'>").append(
+
+                  $("<div>").append(
+                    $("<button>").attr({
+                      "data-id": movie.id,
+                      "class": "remove-from-watchedlist grey btn"
+                    }).text("Remove")
+                  )
+                )
               )
-              
             )
           )
+
+
         )
       })
     })
   });
 
   $(document).on('click', '.remove-from-watchedlist', function () {
-      var $searchCont = $(this).closest(".search-result");
-      var id = $(this).attr('data-id');
-      deleteFromList("watchedList", id, false, function (data) {
-        console.log("delete from watched return", data)
-        $searchCont.remove();
-       M.toast({html: "You've Removed A Movie"});
-      })
+    var $searchCont = $(this).closest(".search-result");
+    var id = $(this).attr('data-id');
+    deleteFromList("watchedList", id, false, function (data) {
+      console.log("delete from watched return", data)
+      $searchCont.remove();
+      M.toast({ html: "You've Removed A Movie" });
     })
+  })
 </script>
