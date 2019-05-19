@@ -1,43 +1,44 @@
 <main>
   {{#if hasResults}}
 
-  <ul>
-    {{#each results}}
-    <li class="search-result">
+  {{#each results}}
+  <div class="search-result grid-x">
 
-      <div class="grid-x red">
-        <div class="cell">
-        <img src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{title}}" class="search-poster">
-        </div>
+      <div class="cell medium-4 small-12">
+        <img src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{title}}" class="poster">
       </div>
-      <div class="grid-x">
-        <div class="cell">
-        <a href="/movie/{{id}}">
-          <h1 class="searchTitle search-info">{{title}}</h1>
-        </a>
-        <div id="buttons-{{id}} button">
-          {{#if ../isLoggedIn}}
-          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline grey" id="btns" data-id="{{id}}"
-            data-title="{{title}}" data-poster="{{poster_path}}">
-            Add to Wish List
-          </a>
-          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline grey" id="btns" data-id="{{id}}"
-            data-title="{{title}}" data-poster="{{poster_path}}">
-            Add to Watched List
-          </a>
-          {{else}}
-          <a class="btn waves-effect waves-light orange btns" href="/signin">Sign in to add to your lists!</a>
-
-          {{/if}}
+      <div class="cell medium-8 small-12 ">
+        <div class="grid-x">
+          <div class="cell">
+            <a href="/movie/{{id}}">
+              <h1 class="searchTitle search-info">{{title}}</h1>
+            </a>
           </div>
+        </div>
+        <div class="grid-x">
+          <div class="cell vcenter">
+            <div id="buttons-{{id}} button">
+              {{#if ../isLoggedIn}}
+              <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline grey" id="btns"
+                data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">
+                Add to Wish List
+              </a>
+              <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline grey" id="btns"
+                data-id="{{id}}" data-title="{{title}}" data-poster="{{poster_path}}">
+                Add to Watched List
+              </a>
+              {{else}}
+              <a class="btn waves-effect waves-light orange btns" href="/signin">Sign in to add to your lists!</a>
 
+              {{/if}}
+            </div>
+          </div>
         </div>
       </div>
 
 
-    </li>
-    {{/each}}
-  </ul>
+  </div>
+  {{/each}}
   {{else}}
   Sorry, No Search Results!
   {{/if}}
@@ -47,15 +48,17 @@
 <script>
   $(document).ready(function () {
     var results = [];
-    {{#each results }}
-      results.push({
-        id: {{ id }},
-        title: "{{title}}",
-        poster_path: "{{poster_path}}"
+    { { #each results } }
+    results.push({
+      id: {{ id }},
+    title: "{{title}}",
+    poster_path: "{{poster_path}}"
       })
-    {{/each}}
+  {
+    {
+      /each}}
 
-      {{#if isLoggedIn }}
+      { { #if isLoggedIn } }
       requestList("watchedList", function (data) {
         data.map(movie => {
           var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
@@ -77,6 +80,8 @@
           }
         })
       })
-      {{/if}}
+      {
+        {
+          /if}}
         });
 </script>

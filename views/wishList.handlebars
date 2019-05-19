@@ -12,11 +12,11 @@
       console.log("received", data);
       data.map(movie => {
         $("#wishlist").prepend(
-          $("<li>").attr("class", "search-result").append(
-            $("<div>").append(
-              $("<img>").attr("src", "https://image.tmdb.org/t/p/w185_and_h278_bestv2/" + movie["poster_path"])
+          $("<div>").attr("class", "search-result grid-x").append(
+            $("<div class='cell medium-4 small-12'>").append(
+              $("<img class='poster'>").attr("src", "https://image.tmdb.org/t/p/original" + movie["poster_path"])
             ),
-            $("<div>").attr("class", "search-info").append(
+            $("<div class='cell medium-8 small-12 vcenter'>").attr("class", "search-info").append(
               $("<a>").attr("href", "/movie/" + movie.apiId).append(
                 $("<h1>").text(movie.title)
               ),
@@ -46,24 +46,24 @@
     deleteFromList("wishList", id, false, function (data) {
       console.log("delete from wish return", data)
       $searchCont.remove();
-      M.toast({html: "You've Removed From Wishlist"});
+      M.toast({ html: "You've Removed From Wishlist" });
     })
   })
 
   $(document).on('click', '.move-to-watchedlist', function () {
-      var $searchCont = $(this).closest(".search-result");
-      
-      var id = $(this).attr('data-id');
-      var title = $(this).attr('data-title');
-      var poster = $(this).attr('data-poster');
+    var $searchCont = $(this).closest(".search-result");
 
-      addToList("watchedList", { id, title, poster }, function (data) {
-        console.log("add to watched return", data);
-      });
-      deleteFromList("wishList", id, false, function (data) {
-        console.log("delete from wish return", data)
-        $searchCont.remove();
-        M.toast({html: "You've Removed A Movie"});
-      })
+    var id = $(this).attr('data-id');
+    var title = $(this).attr('data-title');
+    var poster = $(this).attr('data-poster');
+
+    addToList("watchedList", { id, title, poster }, function (data) {
+      console.log("add to watched return", data);
+    });
+    deleteFromList("wishList", id, false, function (data) {
+      console.log("delete from wish return", data)
+      $searchCont.remove();
+      M.toast({ html: "You've Removed A Movie" });
     })
+  })
 </script>

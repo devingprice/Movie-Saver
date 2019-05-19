@@ -253,7 +253,6 @@ footer {
   color: #444;
   font-weight: bold;
   font-size: 40px;
-  padding: 5px;
 }
 
 .searchTitle:hover {
@@ -268,6 +267,7 @@ footer {
   text-shadow: 2px 2px #ffa733;
   color: #444 !important;
 }
+
 
 .btn-small {
   background: lightgrey !important;
