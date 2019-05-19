@@ -17,11 +17,11 @@
         </a>
         <div id="buttons-{{id}} button">
           {{#if ../isLoggedIn}}
-          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline" id="btns" data-id="{{id}}"
+          <a class="wishlist-button waves-effect waves-light btn-small add_circle_outline grey" id="btns" data-id="{{id}}"
             data-title="{{title}}" data-poster="{{poster_path}}">
             Add to Wish List
           </a>
-          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline" id="btns" data-id="{{id}}"
+          <a class="watchedlist-button waves-effect waves-light btn-small add_circle_outline grey" id="btns" data-id="{{id}}"
             data-title="{{title}}" data-poster="{{poster_path}}">
             Add to Watched List
           </a>
@@ -39,7 +39,7 @@
     {{/each}}
   </ul>
   {{else}}
-  You have no search results
+  Sorry, No Search Results!
   {{/if}}
 
 </main>
@@ -47,13 +47,13 @@
 <script>
   $(document).ready(function () {
     var results = [];
-    {{ #each results }}
-    results.push({
-      id: {{ id }},
-    title: "{{title}}",
-    poster_path: "{{poster_path}}"
-    })
-  {{/each}}
+    {{#each results }}
+      results.push({
+        id: {{ id }},
+        title: "{{title}}",
+        poster_path: "{{poster_path}}"
+      })
+    {{/each}}
 
       {{#if isLoggedIn }}
       requestList("watchedList", function (data) {
