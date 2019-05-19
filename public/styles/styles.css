@@ -235,3 +235,12 @@ footer {
   }
 }
 /* cleaned 5/18 -cm */
+
+
+/* MOVIE BACKDROP */
+.backdrop_path {
+  background-image: radial-gradient(circle at 20% 50%, rgba(22.35%, 23.92%, 24.31%, 0.98) 0%, rgba(1.96%, 5.49%, 9.02%, 0.88) 100%);
+}
+.makeWhite {
+  color: white;
+}

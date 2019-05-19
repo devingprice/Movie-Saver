@@ -39,7 +39,6 @@ app.use(express.static("public"));
 // Routes
 require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app, passport);
-
 require("./config/passport")(passport, db.User);
 
 var syncOptions = { force: false };

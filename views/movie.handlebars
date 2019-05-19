@@ -1,11 +1,13 @@
 <main>
-	<div class="movie-wrapper">
+	<div class="movie-wrapper" style="background-image: url('https://image.tmdb.org/t/p/w1400_and_h450_face/{{backdrop_path}}'">
+ 
 		{{#if id}}
 
-		<div class="">
+		<div class="backdrop_path">
 			<div class="grid-x">
 				<div class="cell medium-5 small-12 vcenter"><img class="poster center_image shad" src="https://image.tmdb.org/t/p/original{{poster_path}}">
-				</div>
+       
+            </div>
 
 
 				<div class="cell medium-7 summary">
@@ -13,27 +15,24 @@
 						<div class="cell orange lighten-1 rcorners1 shad">
 
 							<div class="dataTitle vcenter " id="title-to-grab"><h1>{{title}} </h1><span class="date">({{release_date}})</span></div>
-
-							
-
-						</div>
+</div>
 					</div>
 
 
 					<div class="grid-x ">
 						<div class="cell">
 							<div class="grid-x">
-                        <div class="cell vcenter">
+                        <div class="cell vcenter makeWhite">
 								<p><span>Runtime: {{runtime}}</span> <span>Budget: ${{budget}}</span></p>
                   </div>
 
-								<div class="cell vcenter">
+								<div class="cell vcenter makeWhite">
 									<p>{{#each genres}} <span>{{name}} |</span> {{/each}}</p>
 								</div>
 							</div>
 
 
-							<h4 class="vcenter summary">{{tagline}}</h4>
+							<h4 class="vcenter summary makeWhite">{{tagline}}</h4>
 						</div>
 					</div>
 					{{#if isLoggedIn}}
@@ -56,7 +55,7 @@
 				</div>
 				{{/unless}}
 
-					<div class="summary vcenter">
+					<div class="summary vcenter makeWhite">
 						{{overview}}
 					</div>
 				</div>

@@ -66,6 +66,8 @@ module.exports = {
         }
       })
       .then(response => {
+        console.log("responding");
+        console.log(response);
         cb(response.data);
       })
       .catch(error => {
