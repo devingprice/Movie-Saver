@@ -5,7 +5,9 @@
   <div class="search-result grid-x">
 
       <div class="cell medium-4 small-12">
-        <img src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="{{title}}" class="poster">
+        <img 
+        src={{#if poster_path}}"https://image.tmdb.org/t/p/original{{poster_path}}"{{else}}"/styles/images/placeholder.png"{{/if}} 
+        alt="{{title}}" class="poster">
       </div>
       <div class="cell medium-8 small-12 ">
         <div class="grid-x">
@@ -48,6 +50,7 @@
 <script>
   $(document).ready(function () {
     var results = [];
+<<<<<<< HEAD
     {{#each results}}
     results.push({
       id: {{id}},
@@ -55,8 +58,17 @@
     poster_path: "{{poster_path}}"
     })
   {{/each}}
+=======
+      {{#each results }}
+      results.push({
+        id: {{ id }},
+        title: "{{title}}",
+        poster_path: "{{poster_path}}"
+      })
+      {{/each}}
+>>>>>>> 2997abaaf25e9315f165363c89256837d0426664
 
-      { { #if isLoggedIn } }
+      {{#if isLoggedIn }}
       requestList("watchedList", function (data) {
         data.map(movie => {
           var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
