@@ -126,7 +126,7 @@
          })
       })
 
-   { { #if isLoggedIn } }
+   {{#if isLoggedIn}}
    requestList("watchedList", function (data) {
       data.map(movie => {
          var foundInResults = {{id}} === parseInt(movie.apiId);
@@ -147,8 +147,7 @@
       }
    })
          })
-   {
-      {/if}}
+   {{/if}}
       });
 
       $(document).ready(function () {
