@@ -14,7 +14,7 @@
         $("#wishlist").prepend(
           $("<div>").attr("class", "search-result grid-x").append(
             $("<div class='cell medium-4 small-12'>").append(
-              $("<img class='poster'>").attr("src", "https://image.tmdb.org/t/p/original" + movie["poster_path"])
+              $("<img class='poster shad'>").attr("src", "https://image.tmdb.org/t/p/original" + movie["poster_path"])
             ),
             $("<div class='cell medium-8 small-12 vcenter'>").attr("class", "search-info").append(
               $("<a>").attr("href", "/movie/" + movie.apiId).append(
