@@ -20,9 +20,13 @@ module.exports = function(app, passport) {
   //WATCHEDLIST
 
   //Get all examples
-  app.get("/api/watchedlist", skipIfNotLoggedIn, function(req, res) {
+  app.get("/api/watchedlist/:id?", skipIfNotLoggedIn, function(req, res) {
+    var id = req.session.passport.user;
+    if (req.params.id) {
+      id = req.params.id;
+    }
     db.WatchedList.findAll({
-      where: { UserId: req.session.passport.user }
+      where: { UserId: id }
     }).then(function(dbWatchedList) {
       res.json(dbWatchedList);
     });
@@ -80,8 +84,14 @@ module.exports = function(app, passport) {
   //WISHLIST
 
   //Get all examples
-  app.get("/api/wishlist", skipIfNotLoggedIn, function(req, res) {
-    db.WishList.findAll({}).then(function(dbWishList) {
+  app.get("/api/wishlist/:id", skipIfNotLoggedIn, function(req, res) {
+    var id = req.session.passport.user;
+    if (req.params.id) {
+      id = req.params.id;
+    }
+    db.WishList.findAll({
+      where: { UserId: id }
+    }).then(function(dbWishList) {
       res.json(dbWishList);
     });
   });

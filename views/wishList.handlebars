@@ -8,7 +8,7 @@
   //make ajax request to /api/watchedList
   $(document).ready(function () {
     console.log("ready");
-    requestList("wishList", function (data) {
+    requestList("wishList", {{ userid }}, function (data) {
       console.log("received", data);
       data.map(movie => {
         $("#wishlist").prepend(
