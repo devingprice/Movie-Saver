@@ -89,7 +89,7 @@
 <script>
    $(document).ready(function () {
 
-      getRecommendations({{ id }}, function (data) {
+      getRecommendations({{id}}, function (data) {
          console.log(data);
 
          var htmlHolder = "<div class='grid-x trailer'><div class='cell dataTitle orange lighten-1  vcenter shad'>Similar Movies</div><div class='cell'><div class='swiper-container'><div class='swiper-wrapper'>";
@@ -126,11 +126,10 @@
          })
       })
 
-   { { #if isLoggedIn } }
+   {{#if isLoggedIn}}
    requestList("watchedList", function (data) {
       data.map(movie => {
-         var foundInResults = {{ id }
-      } === parseInt(movie.apiId);
+         var foundInResults = {{id}} === parseInt(movie.apiId);
 
       if (foundInResults) {
          $("#buttons").children(".watchedlist-button")
@@ -141,17 +140,14 @@
 
    requestList("wishList", function (data) {
       data.map(movie => {
-         var foundInResults = {{ id }
-      } === parseInt(movie.apiId);
+         var foundInResults = {{id}} === parseInt(movie.apiId);
       if (foundInResults) {
          $("#buttons").children(".wishlist-button")
             .text("Remove from Wish List").addClass("orange lighten-1")
       }
    })
          })
-   {
-      {
-         /if}}
+   {{/if}}
       });
 
       $(document).ready(function () {
