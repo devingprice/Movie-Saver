@@ -7,7 +7,7 @@
       <div class="cell medium-4 small-12">
         <img 
         src={{#if poster_path}}"https://image.tmdb.org/t/p/original{{poster_path}}"{{else}}"/styles/images/placeholder.png"{{/if}} 
-        alt="{{title}}" class="poster">
+        alt="{{title}}" class="poster shad">
       </div>
       <div class="cell medium-8 small-12 ">
         <div class="grid-x">
@@ -69,7 +69,7 @@
 >>>>>>> 2997abaaf25e9315f165363c89256837d0426664
 
       {{#if isLoggedIn }}
-      requestList("watchedList", function (data) {
+      requestList("watchedList", {{userid}}, function (data) {
         data.map(movie => {
           var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
 
@@ -80,7 +80,7 @@
         })
       })
 
-      requestList("wishList", function (data) {
+      requestList("wishList", {{ userid }}, function (data) {
         data.map(movie => {
           var foundInResults = results.filter(res => res.id === parseInt(movie.apiId));
 

@@ -2,11 +2,12 @@
 /* eslint-disable no-unused-vars */
 // console.log("Loaded index.js");
 
-function requestList(listname, cb) {
+function requestList(listname, id, cb) {
   console.log("ran request list");
+  var addIdToRoute = id === false ? "" : "/" + id;
   $.ajax({
     method: "get",
-    url: "/api/" + listname
+    url: "/api/" + listname + addIdToRoute
   })
     .then(function(data) {
       console.log(data);

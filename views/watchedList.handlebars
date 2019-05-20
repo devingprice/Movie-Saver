@@ -8,13 +8,13 @@
   //make ajax request to /api/watchedList
   $(document).ready(function () {
     console.log("ready");
-    requestList("watchedList", function (data) {
+    requestList("watchedList", {{ userid }}, function (data) {
       console.log("received", data);
       data.map(movie => {
         $("#watched").prepend(
           $("<div class='grid-x search-result'>").append(
             $("<div class='cell medium-4 small-12'>").append(
-              $("<img class='poster'>").attr("src", "https://image.tmdb.org/t/p/original" + movie["poster_path"]),
+              $("<img class='poster shad'>").attr("src", "https://image.tmdb.org/t/p/original" + movie["poster_path"]),
             ),
             $("<div>").attr("class", "vcenter cell medium-8 small-12").append(
               $("<div class='grid-x'>").append(

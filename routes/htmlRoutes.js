@@ -5,7 +5,7 @@ module.exports = function(app) {
     var user = null;
     if (req.isAuthenticated()) {
       user = {
-        id: req.session.passport.user,
+        userid: req.session.passport.user,
         isLoggedIn: req.isAuthenticated()
       };
       console.log("Authenticated", user);
@@ -62,6 +62,7 @@ module.exports = function(app) {
     omdb.movieById(movieDbId, function(data) {
       console.log(data);
       if (req.isAuthenticated()) {
+        data.userid = req.session.passport.user;
         data.isLoggedIn = req.isAuthenticated();
       }
       // eslint-disable-next-line camelcase
@@ -73,7 +74,7 @@ module.exports = function(app) {
   app.get("/wishList", function(req, res) {
     if (req.isAuthenticated()) {
       var user = {
-        id: req.session.passport.user,
+        userid: req.session.passport.user,
         isLoggedIn: req.isAuthenticated()
       };
       console.log("Authenticated", user);
@@ -88,7 +89,7 @@ module.exports = function(app) {
   app.get("/watchedList", function(req, res) {
     if (req.isAuthenticated()) {
       var user = {
-        id: req.session.passport.user,
+        userid: req.session.passport.user,
         isLoggedIn: req.isAuthenticated()
       };
       console.log("Authenticated", user);
@@ -110,6 +111,7 @@ module.exports = function(app) {
         data.hasResults = true;
       }
       if (req.isAuthenticated()) {
+        data.userid = req.session.passport.user;
         data.isLoggedIn = req.isAuthenticated();
         console.log("is logged in ");
       }
